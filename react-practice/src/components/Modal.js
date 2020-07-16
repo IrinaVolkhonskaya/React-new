@@ -2,9 +2,8 @@ import React, { Component, createRef } from 'react';
 
 export default class Modal extends Component {
   modalRef = createRef();
-  state = {
-    isModalOpen: false,
-  };
+ // conponentDidMount() {}; прописать
+ // componentWillUnmount() {}; прописать
 
   render() {
     const { onClose } = this.props;

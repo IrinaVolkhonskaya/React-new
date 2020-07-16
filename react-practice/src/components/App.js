@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import Auth from './Auth';
-// import AppHeader from './AppHeader';
+import AppHeader from './AppHeader';
 import OrderHistory from './OrderHistory';
 import MenuFilter from './MenuFilter';
 // import Menu from './Menu';
 import menuJson from '../menu.json';
 import FilterList from './FilterList';
-import AppHeaderMenu from './AppHeaderMenu';
+
 import Modal from './Modal';
+
 
 const filterMenu = (filter, menuJson) => {
   return menuJson.filter(menuItem =>
@@ -46,13 +47,11 @@ export default class App extends Component {
     return (
       <div>
         <h1>FOODY</h1>
-        <AppHeaderMenu />
+        <AppHeader />
         <button type="button" onClick={this.handleOpenModal}>
           Open Modal
         </button>
         {isModalOpen && <Modal onClose={this.handleCloseModal} />}
-        <br />
-        {/* <AppHeader /> */}
         <br />
         <Auth />
         <br />
