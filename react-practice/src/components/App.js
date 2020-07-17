@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import Auth from './Auth';
-import AppHeader from './AppHeader';
+import AppHeader from './AppHeader/AppHeader';
 import OrderHistory from './OrderHistory';
 import MenuFilter from './MenuFilter';
 // import Menu from './Menu';
 import menuJson from '../menu.json';
-import FilterList from './FilterList';
-
-import Modal from './Modal';
-
+// import FilterList from './FilterList';
+import Modal from './Modal/Modal';
 
 const filterMenu = (filter, menuJson) => {
   return menuJson.filter(menuItem =>
@@ -42,7 +40,7 @@ export default class App extends Component {
   render() {
     const { menuJson, filter, isModalOpen } = this.state;
     console.log('filter:', filter);
-    const filteredMenu = filterMenu(filter, menuJson);
+    // const filteredMenu = filterMenu(filter, menuJson);
 
     return (
       <div>
@@ -58,7 +56,7 @@ export default class App extends Component {
         <OrderHistory />
         <br />
         <MenuFilter filter={filter} onFilterChange={this.handleFilterChange} />
-        <FilterList menuJson={filteredMenu} />
+        {/* <FilterList menuJson={filteredMenu} /> */}
         <br />
         {/* <Menu /> */}
       </div>
