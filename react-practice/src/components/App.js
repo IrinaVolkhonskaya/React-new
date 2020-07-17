@@ -7,6 +7,8 @@ import MenuFilter from './MenuFilter';
 import menuJson from '../menu.json';
 // import FilterList from './FilterList';
 import Modal from './Modal/Modal';
+import Tabs from './Tabs/Tabs';
+import tabsData from '../tabs.json';
 
 const filterMenu = (filter, menuJson) => {
   return menuJson.filter(menuItem =>
@@ -50,6 +52,9 @@ export default class App extends Component {
           Open Modal
         </button>
         {isModalOpen && <Modal onClose={this.handleCloseModal} />}
+        <br />
+        <br />
+        <Tabs items={tabsData} />
         <br />
         <Auth />
         <br />
