@@ -5,6 +5,7 @@ import TestComponent from "./TestComponent";
 // import withStorage from '../enhancers/withStorage';
 // import { compose } from 'recompose';
 import Togglable from "./Togglable";
+import FetchData from "./FetchData";
 
 // const header = css`
 // text-align: center;
@@ -23,6 +24,15 @@ class App extends Component {
             </div>
           )}
         </Togglable>
+
+        <FetchData url="https://jsonplaceholder.typicode.com/users">
+          {({ results, loading, error }) => (
+            <div>
+              {loading && <h1>LOADING!</h1>}
+              {results.length > 0 && JSON.stringify(results, null, 2)}
+            </div>
+          )} 
+        </FetchData>
       </div>
     );
   }
