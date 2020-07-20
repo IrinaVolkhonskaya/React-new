@@ -1,0 +1,22 @@
+import React, {Component} from "react";
+import TestComponent from "./TestComponent";
+import withLog from '../enhancers/withLog';
+import withToggle from '../enhancers/withToggle';
+
+// const header = css`
+// text-align: center;
+// `;
+
+class App extends Component {
+  render() {
+    return (
+      <div>
+        <h1>React Patterns</h1>
+        <TestComponent title="Cool title" text="Super text" />
+      </div>
+      );
+  }
+}
+
+export default withToggle(App);
+// export default withLog(App);
