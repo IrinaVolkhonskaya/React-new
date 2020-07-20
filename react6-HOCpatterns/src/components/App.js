@@ -1,7 +1,9 @@
 import React, {Component} from "react";
 import TestComponent from "./TestComponent";
 import withLog from '../enhancers/withLog';
-import withToggle from '../enhancers/withToggle';
+//import withToggle from '../enhancers/withToggle';
+import withStorage from '../enhancers/withStorage';
+import { compose } from 'recompose';
 
 // const header = css`
 // text-align: center;
@@ -18,5 +20,11 @@ class App extends Component {
   }
 }
 
-export default withToggle(App);
+//библиотека Recompose уже не используется с 25.10.2018, так как появились Хуки
+export default compose(
+  withLog,
+  withStorage
+)(App);
+// export default withStorage(App);
+// export default withToggle(App);
 // export default withLog(App);

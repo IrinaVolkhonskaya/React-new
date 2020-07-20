@@ -8,6 +8,7 @@ const withToggle = (WrappedComponent) => {
 
     render() {
       const { on } = this.state;
+      
       return (
         <div>
           <button onClick={this.toggle}>{on ? "Hide" : "Show"}</button>
