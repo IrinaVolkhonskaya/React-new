@@ -1,7 +1,7 @@
 import React from "react";
 //import withLog from "../enhancers/withLog";
 // import passProps from "../enhancers/passProps";
-import withToggle from '../enhancers/withToggle';
+// import withToggle from '../enhancers/withToggle';
 
 const TestComponent = ({ title, text }) => (
   <div>
@@ -15,6 +15,6 @@ const TestComponent = ({ title, text }) => (
 //   text: "Pass props text",
 // })(TestComponent);
 
-export default withToggle(TestComponent);
-
+//export default withToggle(TestComponent);
 //export default withLog(TestComponent);
+export default TestComponent;
