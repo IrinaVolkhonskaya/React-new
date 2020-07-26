@@ -1,13 +1,11 @@
-import React, { Component, createRef } from 'react';
+import React, { Component } from 'react';
 import s from './Modal.module.css';
 
-export default class Modal extends Component {
-  modalRef = createRef();
- // conponentDidMount() {}; прописать
- // componentWillUnmount() {}; прописать
 
+export default class Modal extends Component {
   render() {
     const { onClose } = this.props;
+
     return (
       <div className={s.backdrop}>
         <div className={s.modalWindow}>
@@ -16,14 +14,11 @@ export default class Modal extends Component {
             cupidatat nostrud officia irure pariatur reprehenderit et do.
             Eiusmod exercitation sint sit Lorem magna occaecat minim qui fugiat
             adipisicing nisi occaecat velit occaecat. Commodo officia amet in ut
-            aute ipsum in dolore aliqua ad Lorem consectetur. Lorem cupidatat
-            deserunt nostrud labore anim ex Lorem deserunt incididunt esse
-            proident nisi consectetur. Consequat tempor consequat velit fugiat
-            proident voluptate duis quis aliquip cillum do id eu commodo.
-            <button type="button" onClick={onClose}>
-              Close
-            </button>
+            aute ipsum in dolore aliqua ad Lorem consectetur.
           </p>
+          <button type="button" onClick={onClose}>
+            Close
+          </button>
         </div>
       </div>
     );
