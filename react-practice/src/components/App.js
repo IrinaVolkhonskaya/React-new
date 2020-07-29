@@ -1,4 +1,4 @@
-import React, { Component, createRef } from 'react';
+import React, { Component } from 'react';
 import Auth from './Auth';
 import AppHeader from './AppHeader/AppHeader';
 import OrderHistory from './OrderHistory';
@@ -15,12 +15,9 @@ const filterMenu = (filter, menuJson) => {
     menuItem.name.toLowerCase().includes(filter.toLowerCase()),
   );
 };
-
-console.log(`filterMenu:`, filterMenu);
+// console.log(`filterMenu:`, filterMenu);
 
 export default class App extends Component {
-  modalRef = createRef();
-
   state = {
     filter: '',
     menuJson,
@@ -41,38 +38,6 @@ export default class App extends Component {
     this.setState({ isModalOpen: false });
   };
 
-  componentDidMount() {
-    window.addEventListener('click', this.handleWindowClick1);
-  }
-
-  shouldComponentUpdate(nextProps, nextState) {
-    const { isModalOpen } = this.state;
-
-    return nextState.isModalOpen !== isModalOpen;
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('click', this.handleWindowClick1);
-  }
-
-  handleWindowClick1 = e => {
-    console.log(`this.modalRef: `,this.modalRef);
-    console.log(`this.modalRef.current: `, this.modalRef.current);
-    console.log(`e.target`, e.target);
-
-    const { isModalOpen } = this.state;
-
-    // const isTargetInsideModal = this.modalRef.current.contains(e.target);
-
-    // if (isModalOpen && !isTargetInsideModal) {
-    //   this.handleCloseModal();
-    // }
-
-    // if (isModalOpen || null) {
-    //   this.handleCloseModal();
-    // }
-  };
-
   render() {
     const { menuJson, filter, isModalOpen } = this.state;
     // console.log('filter:', filter);
@@ -82,13 +47,17 @@ export default class App extends Component {
       <div>
         <h1>FOODY</h1>
         <AppHeader />
-        <button type="button" onClick={this.handleOpenModal}>
-          Open Modal
-        </button>
-        {isModalOpen && (
-          <Modal onClose={this.handleCloseModal} ref={this.modalRef} />
-        )}
-        
+        <div>
+          <button type="button" onClick={this.handleOpenModal}>
+            Open Modal
+          </button>
+          {isModalOpen && (
+            <Modal
+              onClose={this.handleCloseModal}
+              isModalOpen={this.state.isModalOpen}
+            />
+          )}
+        </div>
         <br />
         <br />
         {/* <Tabs items={tabsData} />
