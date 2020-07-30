@@ -2,40 +2,43 @@ import React, { Component, createRef } from 'react';
 import s from './Modal.module.css';
 
 export default class Modal extends Component {
-  modalRef = createRef();
+  backdropRef = createRef();
 
   componentDidMount() {
-    window.addEventListener('click', this.handleWindowClick1);
+    window.addEventListener('click', this.handleWindowClick);
+    window.addEventListener('keydown', this.handleWindowKeyDown);
   }
-  shouldComponentUpdate(nextProps, nextState) {
-    const { isModalOpen } = this.props;
-    return nextProps.isModalOpen !== isModalOpen;
-  }
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   const { isModalOpen } = this.props;
+  //   return nextProps.isModalOpen !== isModalOpen;
+  // }
   componentWillUnmount() {
-    window.removeEventListener('click', this.handleWindowClick1);
+    window.removeEventListener('click', this.handleWindowClick);
+    window.removeEventListener('keydown', this.handleWindowKeyDown);
   }
 
-  handleWindowClick1 = e => {
-    // console.log(`this.modalRef: `, this.modalRef);
-    console.log(`this.modalRef.current: `, this.modalRef.current);
-    console.log(`e.target`, e.target);
-
-    const { isModalOpen, onClose } = this.props;
-
-    console.log(`isModalOpen: `, isModalOpen);
-
-    const isTargetInsideModal = this.modalRef.current.contains(e.target);
-    if (isModalOpen && isTargetInsideModal) {
+  handleWindowKeyDown = e => {
+    const { onClose } = this.props;
+    if (e.keyCode === 27) {
       onClose();
     }
-    console.log(`isTargetInsideModal:`, isTargetInsideModal);
+  };
+
+  handleWindowClick = e => {
+    console.log(`this.backdropRef.current: `, this.backdropRef.current);
+    console.log(`e.target`, e.target);
+
+    const { onClose } = this.props;
+    if (this.backdropRef.current === e.target) {
+      onClose();
+    }
   };
 
   render() {
-    const { onClose } = this.props;
+    const { onClose, children } = this.props;
 
     return (
-      <div className={s.backdrop} ref={this.modalRef}>
+      <div className={s.backdrop} ref={this.backdropRef}>
         <div className={s.modalWindow}>
           <p>
             Duis enim voluptate nisi sint minim incididunt nisi. Consectetur
@@ -48,6 +51,7 @@ export default class Modal extends Component {
             Close
           </button>
         </div>
+        {children}
       </div>
     );
   }
