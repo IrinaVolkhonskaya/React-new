@@ -2,7 +2,7 @@ import React from 'react';
 import OrderItem from './OrderItem';
 
 const Orders = ({ items, onDelete, onShowMoreInfo }) => (
-  <ul>
+  <ol>
     {items.map(item => (
       <li key={item.id}>
         <OrderItem
@@ -15,7 +15,7 @@ const Orders = ({ items, onDelete, onShowMoreInfo }) => (
         />
       </li>
     ))}
-  </ul>
+  </ol>
 );
 
 export default Orders;

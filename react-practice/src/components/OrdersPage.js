@@ -1,13 +1,19 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Orders from './Orders';
+import Spinner from './Spinner';
 import * as API from '../services/orders-api';
 
 export default class OrdersPage extends Component {
-  state = { orders: [] };
+  state = {
+    orders: [],
+    isLoading: false,
+  };
 
   componentDidMount() {
+    this.setState({ isLoading: true });
+
     API.getAllOrdersItems().then(orders => {
-      this.setState({ orders });
+      this.setState({ orders, isLoading: false });
     });
   }
 
@@ -23,38 +29,46 @@ export default class OrdersPage extends Component {
 
   handleShowMoreInfo = id => {
     API.getOrderItemById(id).then(item => {
-      console.log(item);
+      //   console.log(item);
+      alert(
+        `Ваш заказ на сумму ${item.price}UAH был ${item.date} доставлен по адресу ${item.address}`,
+      );
     });
   };
 
   handleAddOrderItem = () => {
     const item = {
-      date: `${Date.now()}`,
-      price: Math.random(),
+      date: `${new Date().toLocaleDateString()}`,
+      price: Math.floor(Math.random() * 10000) / 100,
       address: 'NEW Delivery Address',
-      rating: Math.random(),
+      rating: Math.floor(Math.random() * (10 - 1 + 1)) + 1, // генерация случайных чисел от 1 до 10
     };
 
     API.addOrderItem(item).then(newOrder => {
-        this.setState(state => ({
-            orders: [...state.orders, newOrder],
-        }));
+      this.setState(state => ({
+        orders: [...state.orders, newOrder],
+      }));
     });
   };
 
   render() {
-    const { orders } = this.state;
+    const { orders, isLoading } = this.state;
 
     return (
       <div>
         <button type="button" onClick={this.handleAddOrderItem}>
           Добавить новый заказ
         </button>
-        <Orders
-          items={orders}
-          onDelete={this.handleDeleteItem}
-          onShowMoreInfo={this.handleShowMoreInfo}
-        />
+        <h2>Orders History</h2>
+        {isLoading ? (
+          <Spinner />
+        ) : (
+          <Orders
+            items={orders}
+            onDelete={this.handleDeleteItem}
+            onShowMoreInfo={this.handleShowMoreInfo}
+          />
+        )}
       </div>
     );
   }

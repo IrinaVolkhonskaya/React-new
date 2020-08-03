@@ -9,24 +9,34 @@ const OrderItem = ({
   onShowMoreInfo,
   onDelete,
 }) => (
-  <div>
-    <tr key={id} >
-      <td>Date: {date}</td>
-      <td>Price: {price}</td>
-      <td>Address: {address}</td>
-      <td>Rating: {rating}</td>
-      <td>
-        <button type="button" onClick={onShowMoreInfo}>
-          Детальнее
-        </button>
-      </td>
-      <td>
-        <button type="button" onClick={onDelete}>
-          Удалить
-        </button>
-      </td>
-    </tr>
-  </div>
+//   <div>
+    <table>
+      {/* <thead>
+        <th>Date: </th>
+        <th>Price: </th>
+        <th>Address: </th>
+        <th>Rating: </th>
+      </thead> */}
+      <tbody>
+        <tr key={id}>
+          <td>{date}</td>
+          <td>{price}</td>
+          <td>{address}</td>
+          <td>{rating}</td>
+          <td>
+            <button type="button" onClick={onShowMoreInfo}>
+              Детальнее
+            </button>
+          </td>
+          <td>
+            <button type="button" onClick={onDelete}>
+              Удалить
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+//   </div>
 );
 
 export default OrderItem;
