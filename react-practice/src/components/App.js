@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Auth from './Auth';
 import AppHeader from './AppHeader/AppHeader';
-import OrderHistory from './OrderHistory';
+// import OrderHistory from './OrderHistory';
 import MenuFilter from './MenuFilter';
 // import Menu from './Menu';
 import menuJson from '../menu.json';
@@ -64,7 +64,8 @@ export default class App extends Component {
         <br /> */}
         <Auth />
         <br />
-        <OrderHistory />
+      
+        {/*  <OrderHistory /> */}
         <br />
         <MenuFilter filter={filter} onFilterChange={this.handleFilterChange} />
         {/* <FilterList menuJson={filteredMenu} /> */}
