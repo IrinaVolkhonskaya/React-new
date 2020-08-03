@@ -37,6 +37,8 @@ export default class OrdersPage extends Component {
   };
 
   handleAddOrderItem = () => {
+    this.setState({ isLoading: true });
+
     const item = {
       date: `${new Date().toLocaleDateString()}`,
       price: Math.floor(Math.random() * 10000) / 100,
@@ -46,7 +48,8 @@ export default class OrdersPage extends Component {
 
     API.addOrderItem(item).then(newOrder => {
       this.setState(state => ({
-        orders: [...state.orders, newOrder],
+        orders: [...state.orders, newOrder], 
+        isLoading: false,
       }));
     });
   };
