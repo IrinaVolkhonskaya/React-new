@@ -15,14 +15,12 @@ export const fetchArticleById = (id) =>
     }, 200);
   });
 
+export const fetchArticlesByCategory = (category) => 
+  new Promise((resolve) => {
+    setTimeout(() => {
+      if (category === "all") resolve(articles);
+      const data = articles.filter((a) => a.category === category);
+      resolve(data);
+    }, 200);
+  });
 
-  export const fetchArticlesByCategory = category => {
-      new Promise(resolve => {
-          setTimeout(()=> {
-              if (category === 'all') resolve (articles);
-
-              const data = articles.filter(a => a.category === category);
-              resolve(data);
-          }, 200);
-      })
-  }
