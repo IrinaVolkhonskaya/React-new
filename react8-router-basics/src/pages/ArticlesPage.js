@@ -14,7 +14,20 @@ export default class ArticlesPage extends Component {
   };
 
   componentDidMount() {
-    api.fetchAllArticles().then((articles) => this.setState({ articles }));
+    const category = getCategoryFromProps(this.props);
+
+    // если при входе на страницу категории нет, 
+    //то мы прописываем вручную - all, если есть, то фетчим артикула по выбранной категории
+    if (!category) {
+      return this.props.history.replace({
+        pathname: this.props.location.pathname,
+        search: "category=all",
+      });
+    } 
+
+    api
+      .fetchAllArticles(category)
+      .then((articles) => this.setState({ articles }));
   }
 
   componentDidUpdate(prevProps) {
@@ -28,7 +41,7 @@ export default class ArticlesPage extends Component {
 
     api
       .fetchArticlesByCategory(nextCategory)
-      .then((articles) => this.setState({ articles })) ;
+      .then((articles) => this.setState({ articles }));
   }
 
   handleCategoryChange = (category) => {
@@ -52,7 +65,7 @@ export default class ArticlesPage extends Component {
           value={currentCategory}
           onChange={this.handleCategoryChange}
         />
-        <ArticleList articles={articles} match={match} />
+        <ArticleList articles={articles} />
       </div>
     );
   }

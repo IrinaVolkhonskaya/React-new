@@ -17,12 +17,26 @@ export default class ArticlePage extends Component {
       .then((article) => this.setState({ ...article }));
   }
 
+  handleGoBack = () => {
+    const { state } = this.props.location;
+    const { category } = this.state;
+
+    if (state) {
+      return this.props.history.push(state.from);
+    }
+
+    this.props.history.push({
+      pathname: "/articles",
+      search: `?category={category}`,
+    });
+  };
+
   render() {
     const { title, imageUrl, author, category, body } = this.state;
     return (
       <article>
         <h2>{title}</h2>
-        <img src={imageUrl} alt={title} />
+        <img src={imageUrl} alt={title} width="300" height="200" />
         <p>
           <b>Author: {author}</b>
         </p>
@@ -30,6 +44,9 @@ export default class ArticlePage extends Component {
           <b>Category: {category}</b>
         </p>
         <p>{body}</p>
+        <button type="button" onClick={this.handleGoback}>
+          Back to articles
+        </button>
       </article>
     );
   }
