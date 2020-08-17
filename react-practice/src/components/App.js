@@ -1,6 +1,17 @@
 import React, { Component } from 'react';
-import Auth from './Auth';
+import { Route, Switch } from 'react-router-dom';
+
 import AppHeader from './AppHeader/AppHeader';
+import MenuPage from '../pages/Menu';
+import MenuItemPage from '../pages/MenuItem';
+import AboutPage from '../pages/About';
+import ContactPage from '../pages/Contact';
+import DeliveryPage from '../pages/Delivery';
+import AccountPage from '../pages/Account';
+import OrderHistoryPage from '../pages/OrderHistory';
+import MealPlannerPage from '../pages/Planner';
+
+import Auth from './Auth';
 // import OrderHistory from './OrderHistory';
 import MenuFilter from './MenuFilter';
 // import Menu from './Menu';
@@ -9,6 +20,8 @@ import menuJson from '../menu.json';
 import Modal from './Modal/Modal';
 // import Tabs from './Tabs/Tabs';
 // import tabsData from '../tabs.json';
+
+import routes from '../configs/routes';
 
 const filterMenu = (filter, menuJson) => {
   return menuJson.filter(menuItem =>
@@ -47,6 +60,18 @@ export default class App extends Component {
       <div>
         <h1>FOODY</h1>
         <AppHeader />
+
+        <Switch>
+          <Route exact path={routes.MENU} component={MenuPage} />
+         <Route path={routes.MENU_ITEM} component={MenuItemPage} />
+         <Route path={routes.ABOUT} component={AboutPage} />
+          <Route path={routes.CONTACT} component={ContactPage} />
+          <Route path={routes.DELIVERY} component={DeliveryPage} />
+          <Route path={routes.ACCOUNT} component={AccountPage} />
+          <Route path={routes.ORDER_HISTORY} component={OrderHistoryPage} />
+          <Route path={routes.PLANNER} component={MealPlannerPage} />
+        </Switch>
+
         <div>
           <button type="button" onClick={this.handleOpenModal}>
             Open Modal
@@ -64,7 +89,7 @@ export default class App extends Component {
         <br /> */}
         <Auth />
         <br />
-      
+
         {/*  <OrderHistory /> */}
         <br />
         <MenuFilter filter={filter} onFilterChange={this.handleFilterChange} />
