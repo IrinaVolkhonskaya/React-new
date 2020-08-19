@@ -2,7 +2,7 @@ import React from 'react'
 import {NavLink } from "react-router-dom";
 
 const styles = {
-    activeLink: { color: "palevioletred", textDecoration: "none" },
+    activeLink: { color: "palevioletred", textDecoration: "none"},
   };
   
 const Nav = () => (
