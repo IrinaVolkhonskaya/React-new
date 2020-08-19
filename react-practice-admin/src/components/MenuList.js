@@ -16,8 +16,8 @@ const MenuList = ({ menuItems, match, location }) => (
           <img
             src={menuItem.image}
             alt={menuItem.name}
-            width="200"
-            height="150"
+            width="150"
+            height="100"
           />
           <p>{menuItem.name}</p>
           <p>Цена: {menuItem.price}uah</p>

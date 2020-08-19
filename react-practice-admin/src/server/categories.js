@@ -1,1 +1,1 @@
-export default ['all', 'dessert', 'soup', 'salad', 'main course'];
+export default ['dessert', 'soup', 'salad', 'main course'];

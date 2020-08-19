@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import * as api from "../api-mock/api";
+import * as api from "../server/api";
 
 export default class MenuItemPage extends Component {
   state = {
@@ -9,13 +9,13 @@ export default class MenuItemPage extends Component {
     imageUrl: null,
     price: null,
     category: null,
-    // ingredients: null,
+    ingredients: null,
   };
 
   componentDidMount() {
     api
       .getMenuItemById(this.props.match.params.id)
-      .then((menuItems) => this.setState({ ...menuItems }));
+      .then((menuItem) => this.setState({ ...menuItem }));
   }
 
   handleGoBack = () => {
@@ -33,21 +33,30 @@ export default class MenuItemPage extends Component {
   };
 
   render() {
-    const { name, description, imageUrl, price, category } = this.state;
+    const {
+      name,
+      description,
+      image,
+      price,
+      category,
+      ingredients,
+    } = this.state;
     return (
       <article>
+        <button type="button" onClick={this.handleGoBack}>
+          Назад к меню
+        </button>
         <h2>{name}</h2>
-        <img src={imageUrl} alt={name} width="300" height="200" />
+        <img src={image} alt={name} width="100" height="50" />
         <p>
-          <b>Price: {price}</b>
+          <b>Цена: {price}грн</b>
         </p>
         <p>
-          <b>Category: {category}</b>
+          <b>Категория: {category}</b>
         </p>
         <p>Описание: {description}</p>
-        <button type="button" onClick={this.handleGoBack}>
-          Back to articles
-        </button>
+        <p>Ингредиенты: {ingredients}</p>
+        
       </article>
     );
   }
