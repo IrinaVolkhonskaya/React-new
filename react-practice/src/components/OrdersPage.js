@@ -68,8 +68,8 @@ export default class OrdersPage extends Component {
         ) : (
           <Orders
             items={orders}
-            onDelete={this.handleDeleteItem}
-            onShowMoreInfo={this.handleShowMoreInfo}
+            // onDelete={this.handleDeleteItem}
+            // onShowMoreInfo={this.handleShowMoreInfo}
           />
         )}
       </div>

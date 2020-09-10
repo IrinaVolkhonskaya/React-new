@@ -1,16 +1,9 @@
-import React, { Component } from 'react';
+import React, { lazy, Suspense, Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
+// import Loadable from 'react-loadable';
 
 import AppHeader from './AppHeader/AppHeader';
-import MenuPage from '../pages/Menu';
-import MenuItemPage from '../pages/MenuItem';
-import AboutPage from '../pages/About';
-import ContactPage from '../pages/Contact';
-import DeliveryPage from '../pages/Delivery';
-import AccountPage from '../pages/Account';
-import OrderHistoryPage from '../pages/OrderHistory';
-import MealPlannerPage from '../pages/Planner';
-
+import Loader from './Loader/Loader';
 import Auth from './Auth';
 // import OrderHistory from './OrderHistory';
 import MenuFilter from './MenuFilter';
@@ -22,6 +15,43 @@ import Modal from './Modal/Modal';
 // import tabsData from '../tabs.json';
 
 import routes from '../configs/routes';
+
+// const AsyncMenuPage = Loadable({
+//    loader: () => import('../pages/Menu' /*webpackChunkName: "menu-page"*/),
+//    loading: Loader,
+//    timeout: 5000,
+//    delay: 300,
+// });
+const AsyncMenuPage = lazy(() =>
+  import('../pages/Menu' /*webpackChunkName: "menu-page"*/),
+);
+// const AsyncMenuItemPage = Loadable({
+//   loader: () => import('../pages/MenuItem' /*webpackChunkName: "menuItem-page"*/),
+//   loading: Loader,
+//   timeout: 5000,
+//   delay: 300,
+// });
+const AsyncMenuItemPage = lazy(() =>
+  import('../pages/MenuItem' /*webpackChunkName: "menuItem-page"*/),
+);
+const AsyncAboutPage = lazy(() =>
+  import('../pages/About' /*webpackChunkName: "about-page"*/),
+);
+const AsyncContactPage = lazy(() =>
+  import('../pages/Contact' /*webpackChunkName: "contact-page"*/),
+);
+const AsyncDeliveryPage = lazy(() =>
+  import('../pages/Delivery' /*webpackChunkName: "delivery-page"*/),
+);
+const AsyncAccountPage = lazy(() =>
+  import('../pages/Account' /*webpackChunkName: "account-page"*/),
+);
+const AsyncOrderHistoryPage = lazy(() =>
+  import('../pages/OrderHistory' /*webpackChunkName: "orderHistory-page"*/),
+);
+const AsyncMealPlannerPage = lazy(() =>
+  import('../pages/Planner' /*webpackChunkName: "mealPlanner-page"*/),
+);
 
 const filterMenu = (filter, menuJson) => {
   return menuJson.filter(menuItem =>
@@ -62,14 +92,19 @@ export default class App extends Component {
         <AppHeader />
 
         <Switch>
-          <Route exact path={routes.MENU} component={MenuPage} />
-         <Route path={routes.MENU_ITEM} component={MenuItemPage} />
-         <Route path={routes.ABOUT} component={AboutPage} />
-          <Route path={routes.CONTACT} component={ContactPage} />
-          <Route path={routes.DELIVERY} component={DeliveryPage} />
-          <Route path={routes.ACCOUNT} component={AccountPage} />
-          <Route path={routes.ORDER_HISTORY} component={OrderHistoryPage} />
-          <Route path={routes.PLANNER} component={MealPlannerPage} />
+          <Suspense fallback={Loader}>
+            <Route exact path={routes.MENU} component={AsyncMenuPage} />
+            <Route path={routes.MENU_ITEM} component={AsyncMenuItemPage} />
+            <Route path={routes.ABOUT} component={AsyncAboutPage} />
+            <Route path={routes.CONTACT} component={AsyncContactPage} />
+            <Route path={routes.DELIVERY} component={AsyncDeliveryPage} />
+            <Route path={routes.ACCOUNT} component={AsyncAccountPage} />
+            <Route
+              path={routes.ORDER_HISTORY}
+              component={AsyncOrderHistoryPage}
+            />
+            <Route path={routes.PLANNER} component={AsyncMealPlannerPage} />
+          </Suspense>
         </Switch>
 
         <div>

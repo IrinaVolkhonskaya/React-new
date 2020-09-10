@@ -10,8 +10,8 @@ const Orders = ({ items, onDelete, onShowMoreInfo }) => (
           price={item.price}
           address={item.address}
           rating={item.rating}
-          onShowMoreInfo={() => onShowMoreInfo(item.id)}
-          onDelete={() => onDelete(item.id)}
+          // onShowMoreInfo={() => onShowMoreInfo(item.id)}
+          // onDelete={() => onDelete(item.id)}
         />
       </li>
     ))}
