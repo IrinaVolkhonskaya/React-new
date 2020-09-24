@@ -1,28 +1,38 @@
 import shortid from "shortid";
 import types from "./noteActionTypes";
 
-const addNote = text => ({
-  type: types.ADD,
-  payload: {
-    id: shortid.generate(),
-    text,
-    completed: false,
-  },
+const toggleSuccess = (id) => ({
+  type: types.TOGGLE_COMPLETED_SUCCESS,
+  payload: id,
 });
 
-const deleteNote = id => ({
-type: types.DELETE,
-payload: id,
+const changeFilter = (filter) => ({
+  type: types.CHANGE_FILTER,
+  payload: filter,
 });
 
-const toggleNote = (id) => ({
-  type: types.TOGGLE_COMPLETED,
+const fetchRequest = () => ({
+  type: types.FETCH_REQUEST,
+});
+
+const fetchSuccess = notes => ({
+  type: types.FETCH_SUCCESS,
+  payload: notes,
+});
+
+const addNoteSuccess = note => ({
+  type: types.ADD_SUCCESS,
+  payload: note,
+})
+
+const deleteNoteSuccess = id => ({
+  type: types.DELETE_SUCCESS,
   payload: id,
 })
 
-const changeFilter = filter => ({
-  type: types.CHANGE_FILTER,
-  payload: filter,
-})
+const fetchError = error => ({
+  type: types.FETCH_ERROR,
+  payload: error,
+});
 
-export default { addNote, deleteNote, toggleNote, changeFilter };
+export default { addNoteSuccess, deleteNoteSuccess, toggleSuccess, changeFilter, fetchRequest, fetchSuccess, fetchError};
