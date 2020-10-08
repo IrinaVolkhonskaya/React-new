@@ -1,7 +1,6 @@
 import React from 'react';
 
 import Logo from '../Logo/Logo';
-// import AppNav from './AppNav';
 import UserMenu from '../../modules/user/UserMenu/UserMenu';
 import Navigation from '../Navigation/Navigation';
 

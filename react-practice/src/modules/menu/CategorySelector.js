@@ -1,15 +1,11 @@
 import React from 'react';
-
-const styles = {
-  select: {
-    fontSize: 20,
-  },
-};
+import s from './CategorySelector.module.css';
 
 const handleChangeCategory = e => e.target.value;
+console.log(handleChangeCategory);
 
 const CategorySelector = ({ options, value, handleChangeCategory }) => (
-  <select style={styles.select} value={value} onChange={handleChangeCategory}>
+  <select className={s.select} value={value} onChange={handleChangeCategory}>
     {options.map(o => (
       <option key={o} value={o}>
         {o}

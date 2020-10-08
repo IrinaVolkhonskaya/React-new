@@ -62,6 +62,20 @@
       "address": "NEW Delivery Address",
       "rating": 6,
       "id": 82
+    },
+    {
+      "date": "07.10.2020",
+      "price": 67.57,
+      "address": "NEW Delivery Address",
+      "rating": 8,
+      "id": 87
+    },
+    {
+      "date": "07.10.2020",
+      "price": 25.92,
+      "address": "NEW Delivery Address",
+      "rating": 10,
+      "id": 88
     }
   ]
 }

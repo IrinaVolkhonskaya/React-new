@@ -24,7 +24,7 @@ export default class UserMenu extends Component {
   }
 
   handleWindowClick = e => {
-    console.log(this.containerRef.current);
+    // console.log(this.containerRef.current);
 
     const isTargetInsideContainer = this.containerRef.current.contains(
       e.target,

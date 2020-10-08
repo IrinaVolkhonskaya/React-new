@@ -6,7 +6,7 @@ import AppHeader from './components/AppHeader/AppHeader';
 import Loader from './components/Loader/Loader';
 // import Auth from './Auth/Auth';
 
-import menuJson from './server/menu.json';
+import menuJson from './menu.json';
 import FilterList from './modules/menu/FilterList';
 import MenuFilter from './modules/menu/MenuFilter';
 import Menu from './modules/menu/Menu';
