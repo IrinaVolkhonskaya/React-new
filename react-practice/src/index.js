@@ -1,15 +1,17 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import store from './redux/store';
 import { BrowserRouter, Route } from 'react-router-dom';
 import App from './App';
-// import MenuPage from './modules/menu/MenuPage';
-import './index.css';
+import './index.module.css';
 
-ReactDOM.render(
+render(
   <BrowserRouter>
-    <Route component={App} />
-
-    {/* <MenuPage /> */}
+    <Provider store={store}>
+      <Route component={App} />
+    </Provider>
   </BrowserRouter>,
   document.getElementById('root'),
 );
+

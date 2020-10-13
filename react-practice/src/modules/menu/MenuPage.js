@@ -27,6 +27,7 @@ export default class MenuPage extends Component {
     });
   };
 
+
   // handleAddMenuItem = () => {
   //   const item = {
   //     name: `New name ${Date.now()}`,

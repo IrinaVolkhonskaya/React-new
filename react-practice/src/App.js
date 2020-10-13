@@ -1,16 +1,14 @@
 import React, { lazy, Suspense, Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 // import Loadable from 'react-loadable';
+import { connect } from 'react-redux';
+import * as actions from './redux/actions';
+
+import menu from './menu.json';
 
 import AppHeader from './components/AppHeader/AppHeader';
 import Loader from './components/Loader/Loader';
 // import Auth from './Auth/Auth';
-
-import menuJson from './menu.json';
-import FilterList from './modules/menu/FilterList';
-import MenuFilter from './modules/menu/MenuFilter';
-import Menu from './modules/menu/Menu';
-
 // import Modal from './Modal/Modal';
 // import Tabs from './Tabs/Tabs';
 // import tabsData from './components/Tabs/tabs.json';
@@ -54,38 +52,24 @@ const AsyncMealPlannerPage = lazy(() =>
   import('./pages/Planner' /*webpackChunkName: "mealPlanner-page"*/),
 );
 
-const filterMenu = (filter, menuJson) => {
-  return menuJson.filter(menuItem =>
-    menuItem.name.toLowerCase().includes(filter.toLowerCase()),
-  );
-};
-// console.log(`filterMenu:`, filterMenu);
-
-export default class App extends Component {
+class App extends Component {
   state = {
-    filter: '',
-    menuJson,
-    isModalOpen: false,
+    // isModalOpen: false,
   };
+  // componentDidMount() {
+  //   this.props.fetchMenuRequest(menu);// нужно забрать с бекенда
+  // }
 
-  handleFilterChange = e => {
-    this.setState({
-      filter: e.target.value,
-    });
-  };
+  // handleOpenModal = () => {
+  //   this.setState({ isModalOpen: true });
+  // };
 
-  handleOpenModal = () => {
-    this.setState({ isModalOpen: true });
-  };
-
-  handleCloseModal = () => {
-    this.setState({ isModalOpen: false });
-  };
+  // handleCloseModal = () => {
+  //   this.setState({ isModalOpen: false });
+  // };
 
   render() {
-    const { menuJson, filter, isModalOpen } = this.state;
-    console.log('filter:', filter);
-    const filteredMenu = filterMenu(filter, menuJson);
+    // const { isModalOpen } = this.state;
 
     return (
       <div>
@@ -108,8 +92,8 @@ export default class App extends Component {
           </Suspense>
         </Switch>
 
-        <div>
-          {/* <button type="button" onClick={this.handleOpenModal}>
+        {/* <div> */}
+        {/* <button type="button" onClick={this.handleOpenModal}>
             Open Modal
           </button>
           {isModalOpen && (
@@ -118,18 +102,15 @@ export default class App extends Component {
               isModalOpen={this.state.isModalOpen}
             />
           )} */}
-        </div>
+        {/* </div> */}
 
         {/* <Tabs items={tabsData} />
         <br /> */}
         {/* <Auth /> */}
-        <br />
-
-        <MenuFilter filter={filter} onFilterChange={this.handleFilterChange} />
-        <FilterList menuJson={filteredMenu} />
-        <br />
-        <Menu />
       </div>
     );
   }
 }
+
+// export default connect(null, { fetchMenuRequest: actions.fetchMenuRequest })(App);
+export default App;
