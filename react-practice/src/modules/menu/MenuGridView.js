@@ -32,7 +32,7 @@ const MenuGrid = ({ menu = [], onShowMoreInfo }) =>
             <b>{name}</b>
           </p>
           <p>Цена: {price}</p>
-          {/* <button onClick={() => onShowMoreInfo(id)}>Больше информации</button> */}
+          <button onClick={() => onShowMoreInfo(id)}>Больше информации</button>
         </li>
       ))}
     </ul>

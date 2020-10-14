@@ -91,7 +91,6 @@ class MenuGridContainer extends Component {
 
         <MenuFilter filter={filter} onFilterChange={this.handleFilterChange} />
         <FilterList menuJson={filteredMenu} />
-
         <CurrentFilter value={currentCategory} />
       </div>
     );

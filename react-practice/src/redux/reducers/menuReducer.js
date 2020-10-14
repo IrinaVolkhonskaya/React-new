@@ -1,11 +1,10 @@
 import { combineReducers } from 'redux';
-import { actionTypes } from '../actions';
+import { actionTypes } from '../actionsMenu';
 
-function menuReducer(state = [], { type, payload }) {
+function menuItemsReducer(state = [], { type, payload }) {
   switch (type) {
     case actionTypes.FETCH_MENU_SUCCESS:
-      return payload;
-
+      return payload.ids.menu;
     default:
       return state;
   }
@@ -38,7 +37,7 @@ function errorReducer(state = null, { type, payload }) {
 }
 
 export default combineReducers({
-  menu: menuReducer,
+  menuIds: menuItemsReducer,
   loading: loadingReducer,
   error: errorReducer,
 });

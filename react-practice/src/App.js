@@ -1,10 +1,6 @@
 import React, { lazy, Suspense, Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 // import Loadable from 'react-loadable';
-import { connect } from 'react-redux';
-import * as actions from './redux/actions';
-
-import menu from './menu.json';
 
 import AppHeader from './components/AppHeader/AppHeader';
 import Loader from './components/Loader/Loader';
@@ -112,5 +108,4 @@ class App extends Component {
   }
 }
 
-// export default connect(null, { fetchMenuRequest: actions.fetchMenuRequest })(App);
 export default App;

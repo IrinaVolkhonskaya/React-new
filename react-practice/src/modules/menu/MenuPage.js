@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import MenuGrid from './MenuGridContainer';
 import * as API from '../../services/api';
 
+
 export default class MenuPage extends Component {
   state = { menu: [] };
 
@@ -11,22 +12,11 @@ export default class MenuPage extends Component {
     });
   }
 
-  // handleDeleteItem = id => {
-  //   API.deleteMenuItem(id).then(isOk => {
-  //     if (!isOk) return;
-
-  //     this.setState(state => ({
-  //       menu: state.menu.filter(item => item.id !== id),
-  //     }));
-  //   });
-  // };
-
   handleShowMoreInfo = id => {
     API.getMenuItemById(id).then(item => {
       console.log(item);
     });
   };
-
 
   // handleAddMenuItem = () => {
   //   const item = {
@@ -48,14 +38,12 @@ export default class MenuPage extends Component {
 
     return (
       <div>
-        {/* <button type="button" onClick={this.handleAddMenuItem}>
+        <button type="button" 
+        // onClick={this.handleAddMenuItem}
+        >
           Добавить элемент меню
-        </button> */}
-        <MenuGrid
-          items={menu}
-          // onDelete={this.handleDeleteItem}
-          onShowMoreInfo={this.handleShowMoreInfo}
-        />
+        </button>
+        <MenuGrid items={menu} onShowMoreInfo={this.handleShowMoreInfo} />
       </div>
     );
   }

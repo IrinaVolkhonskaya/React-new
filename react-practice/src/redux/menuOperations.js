@@ -1,8 +1,8 @@
 import axios from 'axios';
-import actions from './actions';
+import actions from './actionsMenu';
 
 const fetchMenu = () => async dispatch => {
-  dispatch(actions.fetchMenuRequest);
+  dispatch(actions.fetchMenuRequest());
 
   try {
     const response = await axios.get('http://localhost:3000/menu');
