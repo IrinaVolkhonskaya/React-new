@@ -1,12 +1,17 @@
-import { connect } from "react-redux";
-import CartView from "../Cart/CartView";
-import * as selectors from "../../redux/selectors";
-import * as actions from "../../redux/actionsCart";
+import { connect } from 'react-redux';
+import CartView from './CartView';
+import * as selectors from '../../redux/selectors';
+import * as actions from '../../redux/actionsCart';
 
-const mapState = (state) => ({
-  products: selectors.getCartProducts(state),
+const mapState = state => ({
+  menuCart: selectors.getCartMenuItems(state),
 });
 
-const mapDispatch = { removeFromCart: actions.removeFromCart };
+
+const mapDispatch = {
+  addToCart: actions.addToCart,
+  removeFromCart: actions.removeFromCart,
+  decreaseFromCart: actions.decreaseFromCart,
+};
 
 export default connect(mapState, mapDispatch)(CartView);

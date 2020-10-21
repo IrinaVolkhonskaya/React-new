@@ -2,11 +2,13 @@ import { combineReducers } from 'redux';
 import menuReducer from './menuReducer';
 import cartReducer from './cartReducer';
 import entityReducer from './entityReducer';
+import categoryReducer from './categoryReducer';
 
 export default combineReducers({
   menu: menuReducer,
   entities: entityReducer,
   cart: cartReducer,
+  categories: categoryReducer,
 });
 
 //state

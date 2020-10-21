@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import MenuGridView from '../menu/MenuGridView';
 import MenuList from './MenuListViewRedux';
 import { menuOperations } from '../../redux';
 import * as selectors from '../../redux/selectors';
-// import menuOperations from '../../redux/menuOperations';
+import * as actions from '../../redux/actionsCart';
 
 class MenuContainerRedux extends Component {
   componentDidMount() {
@@ -17,11 +16,12 @@ class MenuContainerRedux extends Component {
 }
 
 const mapState = state => ({
-  menu: selectors.getAllMenu(state),
+  menu: selectors.getVisibleItems(state),
 });
 
 const mapDispatch = {
   fetchMenu: menuOperations.fetchMenu,
+  addToCart: actions.addToCart,
 };
 
 export default connect(mapState, mapDispatch)(MenuContainerRedux);

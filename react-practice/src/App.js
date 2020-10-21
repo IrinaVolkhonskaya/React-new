@@ -1,9 +1,9 @@
 import React, { lazy, Suspense, Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
-// import Loadable from 'react-loadable';
 
 import AppHeader from './components/AppHeader/AppHeader';
 import Loader from './components/Loader/Loader';
+
 // import Auth from './Auth/Auth';
 // import Modal from './Modal/Modal';
 // import Tabs from './Tabs/Tabs';
@@ -11,21 +11,10 @@ import Loader from './components/Loader/Loader';
 
 import routes from './configs/routes';
 
-// const AsyncMenuPage = Loadable({
-//    loader: () => import('../pages/Menu' /*webpackChunkName: "menu-page"*/),
-//    loading: Loader,
-//    timeout: 5000,
-//    delay: 300,
-// });
 const AsyncMenuPage = lazy(() =>
   import('./pages/Menu' /*webpackChunkName: "menu-page"*/),
 );
-// const AsyncMenuItemPage = Loadable({
-//   loader: () => import('../pages/MenuItem' /*webpackChunkName: "menuItem-page"*/),
-//   loading: Loader,
-//   timeout: 5000,
-//   delay: 300,
-// });
+
 const AsyncMenuItemPage = lazy(() =>
   import('./pages/MenuItem' /*webpackChunkName: "menuItem-page"*/),
 );
@@ -46,6 +35,9 @@ const AsyncOrderHistoryPage = lazy(() =>
 );
 const AsyncMealPlannerPage = lazy(() =>
   import('./pages/Planner' /*webpackChunkName: "mealPlanner-page"*/),
+);
+const AsyncCartPage = lazy(() =>
+  import('./pages/Cart' /*webpackChunkName: "cart-page"*/),
 );
 
 class App extends Component {
@@ -71,7 +63,6 @@ class App extends Component {
       <div>
         <h1>FOODY LOVE</h1>
         <AppHeader />
-
         <Switch>
           <Suspense fallback={Loader}>
             <Route exact path={routes.MENU} component={AsyncMenuPage} />
@@ -84,6 +75,7 @@ class App extends Component {
               path={routes.ORDER_HISTORY}
               component={AsyncOrderHistoryPage}
             />
+            <Route path={routes.CART} component={AsyncCartPage} />
             <Route path={routes.PLANNER} component={AsyncMealPlannerPage} />
           </Suspense>
         </Switch>

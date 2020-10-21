@@ -17,6 +17,7 @@ function ids(state = [], { type, payload }) {
 
     case actionTypes.REMOVE_FROM_CART:
       return state.filter(id => id !== payload.id);
+    
     default:
       return state;
   }
@@ -33,7 +34,14 @@ function amount(state = {}, { type, payload }) {
     case actionTypes.REMOVE_FROM_CART: {
       const { [payload.id]: _, ...newState } = state; //ключ по id(товар, что нужно удалить), мы деструктуризируем наше состояние, записываем в "левую переменную""_" (в то, что никогда не будем использовать), остальные ключи с значениями (оставшиеся товары в корзине),мы записываем в переменную newState,
       return newState; // делаем return объекта, но без ключа (того, что нужно удалить).
-    }
+    };
+
+    case actionTypes.DECREASE_FROM_CART: 
+      return {
+        ...state,
+        [payload.id]: state[payload.id] ? state[payload.id] - 1 : 0,
+      }
+
 
     default:
       return state;

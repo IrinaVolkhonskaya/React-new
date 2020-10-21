@@ -2,21 +2,18 @@ import { normalize } from 'normalizr';
 import * as schemas from './schemas';
 
 import denormalizedMenu from '../menu.json';
-console.log(`denormalizedMenu: `, denormalizedMenu);
+// console.log(`denormalizedMenu: `, denormalizedMenu);
 
 export const actionTypes = {
   //MENU
   FETCH_MENU_REQUEST: 'FETCH_MENU_REQUEST',
   FETCH_MENU_SUCCESS: 'FETCH_MENU_SUCCESS',
   FETCH_MENU_ERROR: 'FETCH_MENU_ERROR',
-  // SELECT_CATEGORY: 'SELECT_CATEGORY',
-
-  //CART
-  ADD_TO_CART: 'ADD_TO_CART',
-  DELETE_TO_CART: 'DELETE_TO_CART',
+  SELECT_CATEGORY: 'SELECT_CATEGORY',
+  CHANGE_FILTER: 'CHANGE_FILTER',
 };
 
-const fetchMenuRequest = (menu) => ({
+const fetchMenuRequest = menu => ({
   type: actionTypes.FETCH_MENU_REQUEST,
   payload: menu,
 });
@@ -40,14 +37,20 @@ const fetchMenuError = error => ({
   payload: error,
 });
 
-// const selectCategory = filter => ({
-//   type: actionTypes.SELECT_CATEGORY,
-//   payload: filter,
-// });
+const changeFilter = filter => ({
+  type: actionTypes.CHANGE_FILTER,
+  payload: filter,
+});
+
+const selectCategory = id => ({
+  type: actionTypes.SELECT_CATEGORY,
+  payload: id,
+});
 
 export default {
   fetchMenuRequest,
   fetchMenuSuccess,
   fetchMenuError,
-  // selectCategory
+  selectCategory,
+  changeFilter,
 };

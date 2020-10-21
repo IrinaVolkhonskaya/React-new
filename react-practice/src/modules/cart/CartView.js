@@ -1,16 +1,27 @@
 import React from 'react';
 import s from './Cart.module.css';
 
-const Cart = ({ menu = [] }) =>
-  menu.length > 0 ? (
+const CartView = ({
+  menuCart = [],
+  removeFromCart,
+  addToCart,
+  decreaseFromCart,
+}) => {
+  // console.log(menuCart);
+  return menuCart.length > 0 ? (
     <table className={s.table}>
       <tbody>
-        {menu.map(({ id, name, amount }) => (
+        {menuCart.map(({ id, name, amount, price }) => (
           <tr key={id}>
             <td>{name}</td>
-            <td>{amount}</td>
             <td>
-              <button>Удалить</button>
+              <button onClick={() => addToCart(id)}>+</button>
+              {amount}
+              <button onClick={() => decreaseFromCart(id)}>-</button>
+            </td>
+            <td>{price} грн</td>
+            <td>
+              <button onClick={() => removeFromCart(id)}>Удалить</button>
             </td>
           </tr>
         ))}
@@ -19,5 +30,6 @@ const Cart = ({ menu = [] }) =>
   ) : (
     <h1>В корзине нет товаров!</h1>
   );
+};
 
-export default Cart;
+export default CartView;

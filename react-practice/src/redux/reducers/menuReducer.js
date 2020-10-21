@@ -10,7 +10,7 @@ function menuItemsReducer(state = [], { type, payload }) {
   }
 }
 
-function loadingReducer(state = false, { type, payload }) {
+function loadingReducer(state = false, { type}) {
   switch (type) {
     case actionTypes.FETCH_MENU_REQUEST:
       return true;
@@ -36,8 +36,18 @@ function errorReducer(state = null, { type, payload }) {
   }
 }
 
+function filterReducer(state = '', { type, payload }) {
+  switch (type) {
+    case actionTypes.CHANGE_FILTER:
+      return payload;
+    default:
+      return state;
+  }
+}
+
 export default combineReducers({
   menuIds: menuItemsReducer,
   loading: loadingReducer,
   error: errorReducer,
+  filter: filterReducer,
 });
