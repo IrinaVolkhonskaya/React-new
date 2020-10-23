@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import CategorySelectorView from './CategorySelectorView';
-import { menuOperations } from '../../redux';
+import { actions, menuOperations } from '../../redux';
 import * as selectors from '../../redux/selectors';
 
 class CategorySelectorContainer extends Component {
@@ -15,11 +15,13 @@ class CategorySelectorContainer extends Component {
 }
 
 const mapState = state => ({
-  categories: selectors.getMenuWithSelectedCategory(state),
+  selectedCategory: selectors.getSelectedCategory(state),
+  categoryNames: selectors.getCategoryNames(state),//["soup", "dessert", "salad", "main course"]
 });
 
 const mapDispatch = {
-  fetchCategories: menuOperations.getAllCategories,
+  getAllCategories: menuOperations.getAllCategories,
+  onChange: actions.selectCategory,
 };
 
 export default connect(mapState, mapDispatch)(CategorySelectorContainer);

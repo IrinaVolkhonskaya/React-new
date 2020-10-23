@@ -5,7 +5,7 @@ import MenuFilterContainer from '../modules/menu/MenuFilterContainer';
 
 const MenuPage = () => (
   <div>
-    {/* <CategorySelectorContainer /> */}
+    <CategorySelectorContainer />
     <MenuFilterContainer />
     <MenuContainer />
   </div>

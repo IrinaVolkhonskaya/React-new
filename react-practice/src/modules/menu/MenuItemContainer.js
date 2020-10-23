@@ -1,29 +1,14 @@
 import React, { Component } from 'react';
-// import { connect } from 'react-redux';
+import { connect } from 'react-redux';
 import MenuItemView from './MenuItemView';
-// import selectors from '../../redux/selectors';
-// import * as actions from '../../redux/actionsCart';
+import selectors from '../../redux/selectors';
 
 
-// { id, image, name, description, price }
+const mapState = state => ({
+  // id: selectors.getMenuItemById(state),
+});
 
-// const menuIds = entities.menu.id;//массив объектов[1.2.3]
-// заренедерить только этот id, с которого перешли 
+// const mapDispatch = { onChange: actions.changeFilter };
 
+export default connect(mapState)(MenuItemView);
 
-export default class MenuItemContainer extends Component {
-  // state = {};
-
-  render() {
-    const { id, image, name, description, price } = this.props;
-    return (
-      <MenuItemView
-        id={id}
-        image={image}
-        name={name}
-        description={description}
-        price={price}
-      />
-    );
-  }
-}

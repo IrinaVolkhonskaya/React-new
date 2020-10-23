@@ -12,12 +12,14 @@ const fetchMenu = () => async dispatch => {
   }
 };
 
-export const getAllCategories = () => async dispatch => {
+const getAllCategories = () => async dispatch => {
   try {
-    const res = await axios.get(`http://localhost:3000/categories`);
-    dispatch(actions.selectCategory(res.data));
-  } catch (err) {
-    console.error(err);
+    const response = await axios.get(`http://localhost:3000/categories`);// [{"id": 0, "name": "soup"},{"id": 1,"name": "dessert"},{ "id": 2,"name": "salad"},      {"id": 3,"name": "main course"}]
+    console.log(`response`, response);
+    dispatch(actions.fetchCategories(response.data));
+    
+  } catch (error) {
+    console.error(error);
   }
 };
 

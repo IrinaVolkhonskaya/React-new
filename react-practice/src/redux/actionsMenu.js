@@ -9,6 +9,7 @@ export const actionTypes = {
   FETCH_MENU_REQUEST: 'FETCH_MENU_REQUEST',
   FETCH_MENU_SUCCESS: 'FETCH_MENU_SUCCESS',
   FETCH_MENU_ERROR: 'FETCH_MENU_ERROR',
+  FETCH_CATEGORIES: 'FETCH_CATEGORIES',
   SELECT_CATEGORY: 'SELECT_CATEGORY',
   CHANGE_FILTER: 'CHANGE_FILTER',
 };
@@ -20,7 +21,7 @@ const fetchMenuRequest = menu => ({
 
 const fetchMenuSuccess = () => {
   const normalizedMenu = normalize(denormalizedMenu, [schemas.MenuSchema]);
-  console.log(`normalizedMenu: `, normalizedMenu);
+  // console.log(`normalizedMenu: `, normalizedMenu);
   return {
     type: actionTypes.FETCH_MENU_SUCCESS,
     payload: {
@@ -42,9 +43,14 @@ const changeFilter = filter => ({
   payload: filter,
 });
 
-const selectCategory = id => ({
+const fetchCategories = categories => ({
+  type: actionTypes.FETCH_CATEGORIES,
+  payload: categories,
+});
+
+const selectCategory = name => ({
   type: actionTypes.SELECT_CATEGORY,
-  payload: id,
+  payload: name,
 });
 
 export default {
@@ -53,4 +59,5 @@ export default {
   fetchMenuError,
   selectCategory,
   changeFilter,
+  fetchCategories,
 };
