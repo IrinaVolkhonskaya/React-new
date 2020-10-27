@@ -21,7 +21,7 @@ const fetchMenuRequest = menu => ({
 
 const fetchMenuSuccess = () => {
   const normalizedMenu = normalize(denormalizedMenu, [schemas.MenuSchema]);
-  // console.log(`normalizedMenu: `, normalizedMenu);
+  console.log(`normalizedMenu: `, normalizedMenu);
   return {
     type: actionTypes.FETCH_MENU_SUCCESS,
     payload: {

@@ -17,33 +17,42 @@ export const getAllMenu = createSelector(
 // };
 
 //Category
-export const getCategories = (state) => state.categories.items;// объекты категорий
-export const getSelectedCategory = (state) => state.categories.selectedCategory;
+export const getCategories = state => state.categories.items; // объекты категорий
+export const getSelectedCategory = state => state.categories.selectedCategory;
 
-export const getCategoryNames = createSelector(
-  [getCategories],
-  categories => categories.map(({ name }) => name),
+export const getCategoryNames = createSelector([getCategories], categories =>
+  categories.map(({ name }) => name),
 );
 
 export const getMenuWithSelectedCategory = createSelector(
-  [getAllMenu, getSelectedCategory ],
-  (menu, selectedCategory) => 
- 
-  menu.filter(item => item.category === selectedCategory),
+  [getAllMenu, getSelectedCategory],
+  (menu, selectedCategory) =>
+    menu.filter(item => item.category === selectedCategory),
 );
-
 
 //Filter
 export const getFilter = state => state.menu.filter;
 
 export const getVisibleItems = createSelector(
   [getAllMenu, getFilter],
-  (itemsName, filter) =>
-    itemsName.filter(item => item.name.toLowerCase().includes(filter)),
+  (menu, filter) =>
+    menu.filter(item => item.name.toLowerCase().includes(filter)),
 );
 
+////////////////////
+
+export const getItemsAndCategory = createSelector(
+  [getAllMenu, getFilter, getSelectedCategory],
+  (menu, filter, selectedCategory) => 
+  menu.filter(({name, category}) => name.toLowerCase().includes(filter) && category.toLowerCase().includes(selectedCategory))
+);
+
+/////////////////////
+
 //Cart
-const getCartMenuItemsIds = state => state.cart.ids;
+function getCartMenuItemsIds(state) {
+  return state.cart.ids;
+}
 const getCartMenuItemsAmounts = state => state.cart.amount;
 
 export const getCartProductsAmount = createSelector(

@@ -16,8 +16,7 @@ class MenuContainerRedux extends Component {
 }
 
 const mapState = state => ({
-  menu: selectors.getVisibleItems(state),//рендер по фильтру в поиске (пока работает или по фильтру поиск или по категории)
-  menu: selectors.getMenuWithSelectedCategory(state),//рендер по категории
+  menu: selectors.getItemsAndCategory(state),
 });
 
 const mapDispatch = {

@@ -2,13 +2,17 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import MenuItemView from './MenuItemView';
 import selectors from '../../redux/selectors';
+import actions from '../../redux/actionsMenu';
 
 
 const mapState = state => ({
   // id: selectors.getMenuItemById(state),
+  id: selectors.getCartMenuItemsIds(state),
 });
 
-// const mapDispatch = { onChange: actions.changeFilter };
+const mapDispatch = { 
+  viewItemMore: actions.changeFilter 
+};
 
-export default connect(mapState)(MenuItemView);
+export default connect(mapState, mapDispatch)(MenuItemView);
 

@@ -6,7 +6,7 @@ import { createLogger } from 'redux-logger';
 import rootReducer from './reducers';
 
 const logger = createLogger();
-const middleware = applyMiddleware(logger, thunk);
+const middleware = applyMiddleware(thunk, logger);
 const enhancer = composeWithDevTools(middleware);
 
 const store = createStore(rootReducer, enhancer);

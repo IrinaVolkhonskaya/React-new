@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './CategorySelector.module.css';
 
-const CategorySelector = ({ categoryNames, currentName, onChange }) => (
+const CategorySelector = ({ categoryNames=[], currentName, onChange }) => (
   <select
     className={s.select}
     value={currentName}

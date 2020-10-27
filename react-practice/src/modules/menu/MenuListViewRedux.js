@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import routes from '../../configs/routes';
 import s from './MenuListView.module.css';
 
-const MenuList = ({ menu = [], addToCart }) =>
-  menu.length > 0 ? (
+const MenuList = ({menu, addToCart, viewItemMore }) => { 
+  return menu && (
     <ul>
       {menu.map(({ id, image, name, price }) => (
         <li key={id}>
@@ -16,14 +16,15 @@ const MenuList = ({ menu = [], addToCart }) =>
             <p>Цена:{price} грн</p>
             
             <Link to={`${routes.MENU}/${id}`}>
-            <button>Детальнее</button>
+            <button 
+            // onClick={viewItemMore(id)}
+            >Детальнее</button>
             </Link>
             <button onClick={() => addToCart(id)}>Добавить в корзину</button>
             <hr />
         
         </li>
       ))}
-    </ul>
-  ) : null;
+    </ul>)}
 
 export default MenuList;
