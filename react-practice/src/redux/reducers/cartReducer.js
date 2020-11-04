@@ -1,8 +1,9 @@
 import { combineReducers } from 'redux';
 import { createReducer } from '@reduxjs/toolkit';
-import { actionTypes } from '../actionsCart';
+// import { actionTypes } from '../actionsCart';
 import actions from '../actionsCart';
 
+console.log(actions)
 //карта корзины
 // cart: {
 //     ids: [1, 2, 3, 4, 5],
@@ -13,11 +14,13 @@ import actions from '../actionsCart';
 // }
 
 const ids = createReducer([], {
-  'cart/ADD_TO_CART': (state, { payload }) =>
+  [actions.addToCart]: (state, { payload }) =>
     state.includes(payload.id) ? state : [...state, payload.id],
-  [actionTypes.REMOVE_FROM_CART]: (state, { payload }) =>
+  [actions.removeFromCart]: (state, { payload }) =>
     state.filter(id => id !== payload.id),
 });
+
+console.log(`ids:`,typeof (ids));
 
 //old version
 
@@ -35,15 +38,15 @@ const ids = createReducer([], {
 // }
 
 const amount = createReducer({}, {
-    'cart/ADD_TO_CART': (state, { payload }) => ({
+  [actions.addToCart]: (state, { payload }) => ({
       ...state,
       [payload.id]: state[payload.id] ? state[payload.id] + 1 : 1,
     }),
-    'cart/REMOVE_FROM_CART': (state, { payload }) => {
+    [actions.removeFromCart]: (state, { payload }) => {
       const { [payload.id]: _, ...newState } = state;
       return newState;
     },
-    'cart/DECREASE_FROM_CART': (state, { payload }) => ({
+    [actions.decreaseFromCart]: (state, { payload }) => ({
       ...state,
       [payload.id]: state[payload.id] ? state[payload.id] - 1 : 0,
     }),

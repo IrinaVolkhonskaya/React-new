@@ -6,6 +6,7 @@ const fetchMenu = () => async dispatch => {
 
   try {
     const response = await axios.get(`http://localhost:3000/menu`);
+    // console.log(`response`, response);
     dispatch(actions.fetchMenuSuccess(response.data));
   } catch (error) {
     dispatch(actions.fetchMenuError(error));

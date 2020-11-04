@@ -1,4 +1,3 @@
-import { composeWithDevTools } from 'redux-devtools-extension';
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import {
   persistStore,
@@ -14,8 +13,6 @@ import storage from 'redux-persist/lib/storage';
 import logger from 'redux-logger';
 import rootReducer from './reducers';
 
-
-
 const middleware = [
   ...getDefaultMiddleware({
     serializableCheck: {
@@ -24,19 +21,19 @@ const middleware = [
   }),
   logger,
 ]; //getDefaultMiddleware под капотом три прослойки (thunk, reduxDevTools, storeAPI)
-const enhancer = composeWithDevTools(middleware);
+// const enhancer = composeWithDevTools(middleware);
 
 const menuPersistConfig = {
   key: 'menu',
   storage,
-  whitelist: ['cart']
+  whitelist: ['cart', 'entities'],
 };
 
 const persistedReducer = persistReducer(menuPersistConfig, rootReducer);
 
 const store = configureStore({
   reducer: persistedReducer,
-  enhancer,
+  middleware,
   devTools: process.env.NODE_ENV === 'development', //использовать devtools только в разработке, в продакшене не нужны.
 });
 

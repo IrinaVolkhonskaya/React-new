@@ -7,7 +7,7 @@ const CartView = ({
   addToCart,
   decreaseFromCart,
 }) => {
-  // console.log(menuCart);
+  // console.log(`menuCart:`, menuCart);
   return menuCart.length > 0 ? (
     <table className={s.table}>
       <tbody>
@@ -20,6 +20,7 @@ const CartView = ({
               <button onClick={() => decreaseFromCart(id)}>-</button>
             </td>
             <td>{price} грн</td>
+            <td>Сумма: {amount * price} грн</td>
             <td>
               <button onClick={() => removeFromCart(id)}>Удалить</button>
             </td>

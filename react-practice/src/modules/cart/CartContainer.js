@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import CartView from './CartView';
 import * as selectors from '../../redux/selectors';
-import * as actions from '../../redux/actionsCart';
+import actions from '../../redux/actionsCart';
 
 const mapState = state => ({
   menuCart: selectors.getCartMenuItems(state),

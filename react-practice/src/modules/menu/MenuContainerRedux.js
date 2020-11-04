@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import MenuList from './MenuListViewRedux';
 import { menuOperations } from '../../redux';
 import * as selectors from '../../redux/selectors';
-import * as actions from '../../redux/actionsCart';
+import actions from '../../redux/actionsCart';
 
 class MenuContainerRedux extends Component {
   componentDidMount() {
