@@ -1,14 +1,45 @@
-import { applyMiddleware, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import thunk from 'redux-thunk';
-import { createLogger } from 'redux-logger';
-
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import {
+  persistStore,
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+import logger from 'redux-logger';
 import rootReducer from './reducers';
 
-const logger = createLogger();
-const middleware = applyMiddleware(thunk, logger);
+
+
+const middleware = [
+  ...getDefaultMiddleware({
+    serializableCheck: {
+      ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+    },
+  }),
+  logger,
+]; //getDefaultMiddleware под капотом три прослойки (thunk, reduxDevTools, storeAPI)
 const enhancer = composeWithDevTools(middleware);
 
-const store = createStore(rootReducer, enhancer);
+const menuPersistConfig = {
+  key: 'menu',
+  storage,
+  whitelist: ['cart']
+};
 
-export default store;
+const persistedReducer = persistReducer(menuPersistConfig, rootReducer);
+
+const store = configureStore({
+  reducer: persistedReducer,
+  enhancer,
+  devTools: process.env.NODE_ENV === 'development', //использовать devtools только в разработке, в продакшене не нужны.
+});
+
+const persistor = persistStore(store);
+
+export default { store, persistor };

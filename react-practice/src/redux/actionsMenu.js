@@ -12,6 +12,7 @@ export const actionTypes = {
   FETCH_CATEGORIES: 'FETCH_CATEGORIES',
   SELECT_CATEGORY: 'SELECT_CATEGORY',
   CHANGE_FILTER: 'CHANGE_FILTER',
+  GET_MENU_ITEM_BY_ID: 'GET_MENU_ITEM_BY_ID',
 };
 
 const fetchMenuRequest = menu => ({
@@ -53,6 +54,11 @@ const selectCategory = name => ({
   payload: name,
 });
 
+// const getMenuItemById = id => ({
+//   type: actionTypes.GET_MENU_ITEM_BY_ID,
+//   payload: id,
+// })
+
 export default {
   fetchMenuRequest,
   fetchMenuSuccess,
@@ -60,4 +66,5 @@ export default {
   selectCategory,
   changeFilter,
   fetchCategories,
+  // getMenuItemById
 };

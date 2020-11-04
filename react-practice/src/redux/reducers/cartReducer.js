@@ -1,5 +1,7 @@
 import { combineReducers } from 'redux';
+import { createReducer } from '@reduxjs/toolkit';
 import { actionTypes } from '../actionsCart';
+import actions from '../actionsCart';
 
 //карта корзины
 // cart: {
@@ -10,43 +12,69 @@ import { actionTypes } from '../actionsCart';
 //     }
 // }
 
-function ids(state = [], { type, payload }) {
-  switch (type) {
-    case actionTypes.ADD_TO_CART:
-      return state.includes(payload.id) ? state : [...state, payload.id];
+const ids = createReducer([], {
+  'cart/ADD_TO_CART': (state, { payload }) =>
+    state.includes(payload.id) ? state : [...state, payload.id],
+  [actionTypes.REMOVE_FROM_CART]: (state, { payload }) =>
+    state.filter(id => id !== payload.id),
+});
 
-    case actionTypes.REMOVE_FROM_CART:
-      return state.filter(id => id !== payload.id);
-    
-    default:
-      return state;
-  }
-}
+//old version
 
-function amount(state = {}, { type, payload }) {
-  switch (type) {
-    case actionTypes.ADD_TO_CART:
-      return {
-        ...state,
-        [payload.id]: state[payload.id] ? state[payload.id] + 1 : 1,
-      };
+// function ids(state = [], { type, payload }) {
+//   switch (type) {
+//     case actionTypes.ADD_TO_CART:
+//       return state.includes(payload.id) ? state : [...state, payload.id];
 
-    case actionTypes.REMOVE_FROM_CART: {
-      const { [payload.id]: _, ...newState } = state; //ключ по id(товар, что нужно удалить), мы деструктуризируем наше состояние, записываем в "левую переменную""_" (в то, что никогда не будем использовать), остальные ключи с значениями (оставшиеся товары в корзине),мы записываем в переменную newState,
-      return newState; // делаем return объекта, но без ключа (того, что нужно удалить).
-    };
+//     case actionTypes.REMOVE_FROM_CART:
+//       return state.filter(id => id !== payload.id);
 
-    case actionTypes.DECREASE_FROM_CART: 
-      return {
-        ...state,
-        [payload.id]: state[payload.id] ? state[payload.id] - 1 : 0,
-      }
+//     default:
+//       return state;
+//   }
+// }
 
+const amount = createReducer({}, {
+    'cart/ADD_TO_CART': (state, { payload }) => ({
+      ...state,
+      [payload.id]: state[payload.id] ? state[payload.id] + 1 : 1,
+    }),
+    'cart/REMOVE_FROM_CART': (state, { payload }) => {
+      const { [payload.id]: _, ...newState } = state;
+      return newState;
+    },
+    'cart/DECREASE_FROM_CART': (state, { payload }) => ({
+      ...state,
+      [payload.id]: state[payload.id] ? state[payload.id] - 1 : 0,
+    }),
+  },
+);
 
-    default:
-      return state;
-  }
-}
+//old version
+
+// function amount(state = {}, { type, payload }) {
+//   switch (type) {
+//     case actionTypes.ADD_TO_CART:
+//       return {
+//         ...state,
+//         [payload.id]: state[payload.id] ? state[payload.id] + 1 : 1,
+//       };
+
+//     case actionTypes.REMOVE_FROM_CART: {
+//       const { [payload.id]: _, ...newState } = state; //ключ по id(товар, что нужно удалить), мы деструктуризируем наше состояние, записываем в "левую переменную""_" (в то, что никогда не будем использовать), остальные ключи с значениями (оставшиеся товары в корзине),мы записываем в переменную newState,
+//       return newState; // делаем return объекта, но без ключа (того, что нужно удалить).
+//     };
+
+//     case actionTypes.DECREASE_FROM_CART:
+//       return {
+//         ...state,
+//         [payload.id]: state[payload.id] ? state[payload.id] - 1 : 0,
+//       }
+
+//     default:
+//       return state;
+//   }
+// }
 
 export default combineReducers({
   ids,

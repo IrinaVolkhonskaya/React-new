@@ -10,6 +10,17 @@ function menuItemsReducer(state = [], { type, payload }) {
   }
 }
 
+
+// function menuItemReducer(state = '', { type, payload }) {
+//   switch (type) {
+//     case actionTypes.GET_MENU_ITEM_BY_ID:
+//       return payload.ids.menu.id;
+//     default:
+//       return state;
+//   }
+// }
+
+
 function loadingReducer(state = false, { type}) {
   switch (type) {
     case actionTypes.FETCH_MENU_REQUEST:
@@ -50,4 +61,5 @@ export default combineReducers({
   loading: loadingReducer,
   error: errorReducer,
   filter: filterReducer,
+  // idItem: menuItemReducer,
 });

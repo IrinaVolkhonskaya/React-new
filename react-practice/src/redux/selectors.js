@@ -10,11 +10,11 @@ export const getAllMenu = createSelector(
 );
 //переход к рендеру одного артикула меню
 
-// export const getMenuItemById = (state, id) => {
-//   const menuItems = getAllMenu(state);
-//   console.log(`menuItems`, menuItems);
-//   return menuItems.find(menuItem => menuItem.id === id);
-// };
+export const getMenuItemById = createSelector(
+  [getAllMenu, (_, menuItem) => menuItem],
+  (items, menuItem) => items.find(item => item.id === menuItem),
+);
+
 
 //Category
 export const getCategories = state => state.categories.items; // объекты категорий
@@ -24,30 +24,19 @@ export const getCategoryNames = createSelector([getCategories], categories =>
   categories.map(({ name }) => name),
 );
 
-export const getMenuWithSelectedCategory = createSelector(
-  [getAllMenu, getSelectedCategory],
-  (menu, selectedCategory) =>
-    menu.filter(item => item.category === selectedCategory),
-);
-
 //Filter
 export const getFilter = state => state.menu.filter;
 
-export const getVisibleItems = createSelector(
-  [getAllMenu, getFilter],
-  (menu, filter) =>
-    menu.filter(item => item.name.toLowerCase().includes(filter)),
-);
-
-////////////////////
-
+// составной селектор для поиска по имени и выбора по категории одовременно
 export const getItemsAndCategory = createSelector(
   [getAllMenu, getFilter, getSelectedCategory],
-  (menu, filter, selectedCategory) => 
-  menu.filter(({name, category}) => name.toLowerCase().includes(filter) && category.toLowerCase().includes(selectedCategory))
+  (menu, filter, selectedCategory) =>
+    menu.filter(
+      ({ name, category }) =>
+        name.toLowerCase().includes(filter) &&
+        category.toLowerCase().includes(selectedCategory),
+    ),
 );
-
-/////////////////////
 
 //Cart
 function getCartMenuItemsIds(state) {
@@ -74,4 +63,5 @@ export default {
   getMenuEntities,
   getCartMenuItemsIds,
   getCartMenuItemsAmounts,
+  getMenuItemById,
 };
