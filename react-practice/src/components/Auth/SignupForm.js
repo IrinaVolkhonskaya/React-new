@@ -1,84 +1,167 @@
+// import React, { Component } from 'react';
+// import { connect } from 'react-redux';
+// import * as operations from '../../redux/authOperations';
+
+// const INITIAL_STATE = {
+//   name: '',
+//   email: '',
+//   phone: '',
+//   password: '',
+// };
+
+// class SignUpForm extends Component {
+//   state = { ...INITIAL_STATE };
+
+//   handleChange = e => {
+//     this.setState({
+//       [e.target.name]: e.target.value,
+//     });
+//   };
+
+//   handleSubmit = evt => {
+//     evt.preventDefault();
+
+//     console.log(this.state);
+
+//     this.reset();
+//   };
+
+//   reset() {
+//     this.setState({ ...INITIAL_STATE });
+//   }
+
+//   render() {
+//     const { name, email, phone, password } = this.state;
+//     return (
+//       <form onSubmit={this.handleSubmit}>
+//         <h2>SingUP</h2>
+//         <label>
+//           Name
+//           <input
+//             type="text"
+//             placeholder="Введите Ваше имя"
+//             name="name"
+//             value={name}
+//             onChange={this.handleChange}
+//           />
+//         </label>
+//         <br />
+//         <label>
+//           Email
+//           <input
+//             type="email"
+//             name="email"
+//             value={email}
+//             onChange={this.handleChange}
+//             placeholder="email"
+//           />
+//         </label>
+//         <br />
+//         <label>
+//           Phone number
+//           <input
+//             type="tel"
+//             name="phone"
+//             value={phone}
+//             onChange={this.handleChange}
+//             placeholder="phone"
+//           />
+//         </label>
+//         <br />
+//         <label>
+//           Password
+//           <input
+//             type="password"
+//             name="password"
+//             value={password}
+//             onChange={this.handleChange}
+//             placeholder="password"
+//           />
+//         </label>
+//         <br />
+//         <button onClick={this.handleSubmit}>Sign Up</button>
+//       </form>
+//     );
+//   }
+// }
+
+// const mapDispatch = {
+//   onSubmit: operations.signUp
+// };
+
+// export default connect(
+//   null,
+//   mapDispatch
+// )(SignUpForm);
+
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import * as operations from '../../redux/authOperations';
+import Form from './common/Form/Form';
+import Input from './common/Input/Input';
+import Label from './common/Label/Label';
+import Button from './common/Button/Button';
 
-const INITIAL_STATE = {
-  name: '',
-  email: '',
-  phone: '',
-  password: '',
-};
+const INITIAL_STATE = { name: '', email: '', password: '' };
 
-export default class SignupForm extends Component {
+class SignUpForm extends Component {
   state = { ...INITIAL_STATE };
 
-  handleChange = e => {
+  handleChange = ({ target: { name, value } }) => {
     this.setState({
-      [e.target.name]: e.target.value,
+      [name]: value,
     });
   };
 
-  handleSubmit = evt => {
-    evt.preventDefault();
+  handleSubmit = e => {
+    e.preventDefault();
 
-    console.log(this.state);
+    this.props.onSubmit({ ...this.state });
 
-    this.reset();
+    this.setState({ ...INITIAL_STATE });
   };
 
-  reset() {
-    this.setState({ ...INITIAL_STATE });
-  }
-
   render() {
-    const { name, email, phone, password } = this.state;
+    const { name, email, password } = this.state;
+
     return (
-      <form onSubmit={this.handleSubmit}>
-        <h2>SingUP</h2>
-        <label>
-          Name
-          <input
+      <Form onSubmit={this.handleSubmit}>
+        <Label text="Name">
+          <Input
             type="text"
-            placeholder="Введите Ваше имя"
             name="name"
             value={name}
             onChange={this.handleChange}
           />
-        </label>
-        <br />
-        <label>
-          Email
-          <input
+        </Label>
+
+        <Label text="Email">
+          <Input
             type="email"
             name="email"
             value={email}
             onChange={this.handleChange}
-            placeholder="email"
+            placeholder="example@mail.com"
           />
-        </label>
-        <br />
-        <label>
-          Phone number
-          <input
-            type="tel"
-            name="phone"
-            value={phone}
-            onChange={this.handleChange}
-            placeholder="phone"
-          />
-        </label>
-        <br />
-        <label>
-          Password
-          <input
+        </Label>
+
+        <Label text="Password">
+          <Input
             type="password"
             name="password"
             value={password}
             onChange={this.handleChange}
-            placeholder="password"
           />
-        </label>
-        <br />
-        <button onClick={this.handleSubmit}>Sign Up</button>
-      </form>
+        </Label>
+
+        <Button label="Sign Up" type="submit" />
+      </Form>
     );
   }
 }
+
+const mapDispatch = {
+  onSubmit: operations.signUp,
+};
+
+export default connect(null, mapDispatch)(SignUpForm);

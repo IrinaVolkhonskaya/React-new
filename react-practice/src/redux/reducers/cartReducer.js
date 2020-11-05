@@ -3,7 +3,7 @@ import { createReducer } from '@reduxjs/toolkit';
 // import { actionTypes } from '../actionsCart';
 import actions from '../actionsCart';
 
-console.log(actions)
+// console.log(actions);
 //карта корзины
 // cart: {
 //     ids: [1, 2, 3, 4, 5],
@@ -20,8 +20,6 @@ const ids = createReducer([], {
     state.filter(id => id !== payload.id),
 });
 
-console.log(`ids:`,typeof (ids));
-
 //old version
 
 // function ids(state = [], { type, payload }) {
@@ -37,8 +35,10 @@ console.log(`ids:`,typeof (ids));
 //   }
 // }
 
-const amount = createReducer({}, {
-  [actions.addToCart]: (state, { payload }) => ({
+const amount = createReducer(
+  {},
+  {
+    [actions.addToCart]: (state, { payload }) => ({
       ...state,
       [payload.id]: state[payload.id] ? state[payload.id] + 1 : 1,
     }),

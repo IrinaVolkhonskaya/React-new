@@ -3,12 +3,14 @@ import menuReducer from './menuReducer';
 import cartReducer from './cartReducer';
 import entityReducer from './entityReducer';
 import categoryReducer from './categoryReducer';
+import sessionReducer from './sessionReducer';
 
 export default combineReducers({
   menu: menuReducer,
   entities: entityReducer,
   cart: cartReducer,
   categories: categoryReducer,
+  session: sessionReducer,
 });
 
 //state

@@ -12,6 +12,7 @@ import {
 import storage from 'redux-persist/lib/storage';
 import logger from 'redux-logger';
 import rootReducer from './reducers';
+// import sessionReducer from './reducers/sessionReducer';
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -26,8 +27,14 @@ const middleware = [
 const menuPersistConfig = {
   key: 'menu',
   storage,
-  whitelist: ['cart', 'entities'],
+  whitelist: ['cart', 'entities', 'session'],
 };
+
+// const sessionPersistConfig = {
+//   key: 'session',
+//   storage,
+//   whitelist: ['token'],
+// };
 
 const persistedReducer = persistReducer(menuPersistConfig, rootReducer);
 

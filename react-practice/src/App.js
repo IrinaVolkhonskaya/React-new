@@ -40,6 +40,14 @@ const AsyncCartPage = lazy(() =>
   import('./pages/Cart' /*webpackChunkName: "cart-page"*/),
 );
 
+const AsyncSignInPage = lazy(() =>
+import('./pages/SignIn' /*webpackChunkName: "signIn-page"*/ ),
+);
+
+const AsyncSignUpPage = lazy(() =>
+import('./pages/SignUp' /*webpackChunkName: "signUp-page"*/ ),
+);
+
 class App extends Component {
   state = {
     // isModalOpen: false,
@@ -76,6 +84,8 @@ class App extends Component {
               component={AsyncOrderHistoryPage}
             />
             <Route path={routes.CART} component={AsyncCartPage} />
+            <Route path={routes.SIGNIN} component={AsyncSignInPage} />
+            <Route path={routes.SIGNUP} component={AsyncSignUpPage} />
             <Route path={routes.PLANNER} component={AsyncMealPlannerPage} />
           </Suspense>
         </Switch>
@@ -94,7 +104,6 @@ class App extends Component {
 
         {/* <Tabs items={tabsData} />
         <br /> */}
-        {/* <Auth /> */}
       </div>
     );
   }
