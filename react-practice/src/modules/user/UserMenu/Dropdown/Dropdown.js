@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import userNavItems from '../../../../configs/user-nav';
+import Button from '../../../../components/Auth/common/Button/Button';
 
 import s from './Dropdown.module.css';
 
@@ -13,7 +14,6 @@ const Dropdown = () => (
         </li>
       ))}
     </ul>
-    <button type="button">Logout</button>
   </div>
 );
 

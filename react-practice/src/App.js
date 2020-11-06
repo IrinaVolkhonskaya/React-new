@@ -1,6 +1,6 @@
 import React, { lazy, Suspense, Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
-
+import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 import AppHeader from './components/AppHeader/AppHeader';
 import Loader from './components/Loader/Loader';
 
@@ -78,12 +78,12 @@ class App extends Component {
             <Route path={routes.ABOUT} component={AsyncAboutPage} />
             <Route path={routes.CONTACT} component={AsyncContactPage} />
             <Route path={routes.DELIVERY} component={AsyncDeliveryPage} />
-            <Route path={routes.ACCOUNT} component={AsyncAccountPage} />
+            <ProtectedRoute path={routes.ACCOUNT} component={AsyncAccountPage} />
             <Route
               path={routes.ORDER_HISTORY}
               component={AsyncOrderHistoryPage}
             />
-            <Route path={routes.CART} component={AsyncCartPage} />
+            <ProtectedRoute path={routes.CART} component={AsyncCartPage} />
             <Route path={routes.SIGNIN} component={AsyncSignInPage} />
             <Route path={routes.SIGNUP} component={AsyncSignUpPage} />
             <Route path={routes.PLANNER} component={AsyncMealPlannerPage} />
