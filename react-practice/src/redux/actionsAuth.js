@@ -24,7 +24,7 @@ export const actionTypes = {
     payload: {
       user
     }
-  });
+  }); 
   
   export const signUpRequest = () => ({
     type: actionTypes.SIGN_UP_REQUEST

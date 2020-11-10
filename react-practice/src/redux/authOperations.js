@@ -15,6 +15,8 @@ import * as selectors from './userSelectors';
 
 axios.defaults.baseURL = 'http://localhost:4040';
 
+// функция setAuthHeader подвешивает на axios дефолтные заголовки http-запроса (header)
+// если залогинились, то уже всегда будет такой заголовок.
 const setAuthHeader = token => {
   axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 };
@@ -57,6 +59,7 @@ export const signOut = () => dispatch => {
   });
 };
 
+//при загрузке страницы проверяем, есть ли токен, если есть, то пытаемся его авторизировать, если токена нет, то рендерим наш интерфейс без аутентификации
 export const refreshCurrentUser = () => (dispatch, getState) => {
   const token = selectors.getToken(getState());
 

@@ -1,10 +1,12 @@
 import React, { lazy, Suspense, Component } from 'react';
+import { connect } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
+import PublicRoute from './components/PublicRoute/PublicRoute';
 import AppHeader from './components/AppHeader/AppHeader';
 import Loader from './components/Loader/Loader';
+import * as operations from './redux/authOperations';
 
-// import Auth from './Auth/Auth';
 // import Modal from './Modal/Modal';
 // import Tabs from './Tabs/Tabs';
 // import tabsData from './components/Tabs/tabs.json';
@@ -52,6 +54,10 @@ class App extends Component {
   state = {
     // isModalOpen: false,
   };
+componentDidMount() {
+  this.props.refreshCurrentUser();
+}
+
   // componentDidMount() {
   //   this.props.fetchMenuRequest(menu);// нужно забрать с бекенда
   // }
@@ -73,20 +79,20 @@ class App extends Component {
         <AppHeader />
         <Switch>
           <Suspense fallback={Loader}>
-            <Route exact path={routes.MENU} component={AsyncMenuPage} />
-            <Route path={routes.MENU_ITEM} component={AsyncMenuItemPage} />
-            <Route path={routes.ABOUT} component={AsyncAboutPage} />
-            <Route path={routes.CONTACT} component={AsyncContactPage} />
-            <Route path={routes.DELIVERY} component={AsyncDeliveryPage} />
+            <PublicRoute exact path={routes.MENU} component={AsyncMenuPage} />
+            <PublicRoute path={routes.MENU_ITEM} component={AsyncMenuItemPage} />
+            <PublicRoute path={routes.ABOUT} component={AsyncAboutPage} />
+            <PublicRoute path={routes.CONTACT} component={AsyncContactPage} />
+            <PublicRoute path={routes.DELIVERY} component={AsyncDeliveryPage} />
             <ProtectedRoute path={routes.ACCOUNT} component={AsyncAccountPage} />
-            <Route
+            <ProtectedRoute
               path={routes.ORDER_HISTORY}
               component={AsyncOrderHistoryPage}
             />
             <ProtectedRoute path={routes.CART} component={AsyncCartPage} />
-            <Route path={routes.SIGNIN} component={AsyncSignInPage} />
-            <Route path={routes.SIGNUP} component={AsyncSignUpPage} />
-            <Route path={routes.PLANNER} component={AsyncMealPlannerPage} />
+            <PublicRoute path={routes.SIGNIN} restricted component={AsyncSignInPage} />
+            <PublicRoute path={routes.SIGNUP} restricted component={AsyncSignUpPage} />
+            <ProtectedRoute path={routes.PLANNER} component={AsyncMealPlannerPage} />
           </Suspense>
         </Switch>
 
@@ -109,4 +115,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect(null, {refreshCurrentUser: operations.refreshCurrentUser })(App);

@@ -10,12 +10,23 @@ const ContactPage = () => (
       width="300"
       height="200"
     />
-    <p><b>Телефон:</b> +38 (050) 000-00-00</p>
-    <p><b>Вопросы по заказам:</b> bestservice@foodylove.com</p>
 
-    <p><b>По сотрудничеству: </b>support@foodylove.com</p>
+    <p>
+      <b>Наш телефон: </b>
+      <a href="tel:+380500000000">+38(050)123-45-67</a>
+    </p>
 
-    <p><b>Foody Love:</b> Киев, ул. Любимая, 777</p>
+    <p>
+      <b>Вопросы по заказам:</b><a href="mailto:bestservice@foodylove.com">bestservice@foodylove.com</a>
+    </p>
+
+    <p>
+      <b>По сотрудничеству: </b><a href="mailto:support@foodylove.com">support@foodylove.com</a>
+    </p>
+
+    <p>
+      <b>Foody Love:</b> Киев, бульвар Леси Украинки, 26
+    </p>
   </div>
 );
 

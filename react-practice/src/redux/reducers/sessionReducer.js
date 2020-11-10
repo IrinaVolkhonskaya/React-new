@@ -34,6 +34,7 @@ const isAuthenticated = (state = false, { type, payload }) => {
     case actionTypes.SIGN_UP_ERROR:
     case actionTypes.SIGN_IN_ERROR:
     case actionTypes.SIGN_OUT_SUCCESS:
+    
       return false;
 
     default:
