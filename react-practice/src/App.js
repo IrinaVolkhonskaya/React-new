@@ -1,6 +1,6 @@
 import React, { lazy, Suspense, Component } from 'react';
 import { connect } from 'react-redux';
-import { Route, Switch } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 import PublicRoute from './components/PublicRoute/PublicRoute';
 import AppHeader from './components/AppHeader/AppHeader';
@@ -35,28 +35,26 @@ const AsyncAccountPage = lazy(() =>
 const AsyncOrderHistoryPage = lazy(() =>
   import('./pages/OrderHistory' /*webpackChunkName: "orderHistory-page"*/),
 );
-const AsyncMealPlannerPage = lazy(() =>
-  import('./pages/Planner' /*webpackChunkName: "mealPlanner-page"*/),
-);
+
 const AsyncCartPage = lazy(() =>
   import('./pages/Cart' /*webpackChunkName: "cart-page"*/),
 );
 
 const AsyncSignInPage = lazy(() =>
-import('./pages/SignIn' /*webpackChunkName: "signIn-page"*/ ),
+  import('./pages/SignIn' /*webpackChunkName: "signIn-page"*/),
 );
 
 const AsyncSignUpPage = lazy(() =>
-import('./pages/SignUp' /*webpackChunkName: "signUp-page"*/ ),
+  import('./pages/SignUp' /*webpackChunkName: "signUp-page"*/),
 );
 
 class App extends Component {
-  state = {
-    // isModalOpen: false,
-  };
-componentDidMount() {
-  this.props.refreshCurrentUser();
-}
+  // state = {
+  // isModalOpen: false,
+  // };
+  componentDidMount() {
+    this.props.refreshCurrentUser();
+  }
 
   // componentDidMount() {
   //   this.props.fetchMenuRequest(menu);// нужно забрать с бекенда
@@ -80,19 +78,32 @@ componentDidMount() {
         <Switch>
           <Suspense fallback={Loader}>
             <PublicRoute exact path={routes.MENU} component={AsyncMenuPage} />
-            <PublicRoute path={routes.MENU_ITEM} component={AsyncMenuItemPage} />
+            <PublicRoute
+              path={routes.MENU_ITEM}
+              component={AsyncMenuItemPage}
+            />
             <PublicRoute path={routes.ABOUT} component={AsyncAboutPage} />
             <PublicRoute path={routes.CONTACT} component={AsyncContactPage} />
             <PublicRoute path={routes.DELIVERY} component={AsyncDeliveryPage} />
-            <ProtectedRoute path={routes.ACCOUNT} component={AsyncAccountPage} />
+            <ProtectedRoute
+              path={routes.ACCOUNT}
+              component={AsyncAccountPage}
+            />
             <ProtectedRoute
               path={routes.ORDER_HISTORY}
               component={AsyncOrderHistoryPage}
             />
             <ProtectedRoute path={routes.CART} component={AsyncCartPage} />
-            <PublicRoute path={routes.SIGNIN} restricted component={AsyncSignInPage} />
-            <PublicRoute path={routes.SIGNUP} restricted component={AsyncSignUpPage} />
-            <ProtectedRoute path={routes.PLANNER} component={AsyncMealPlannerPage} />
+            <PublicRoute
+              path={routes.SIGNIN}
+              restricted
+              component={AsyncSignInPage}
+            />
+            <PublicRoute
+              path={routes.SIGNUP}
+              restricted
+              component={AsyncSignUpPage}
+            />
           </Suspense>
         </Switch>
 
@@ -115,4 +126,6 @@ componentDidMount() {
   }
 }
 
-export default connect(null, {refreshCurrentUser: operations.refreshCurrentUser })(App);
+export default connect(null, {
+  refreshCurrentUser: operations.refreshCurrentUser,
+})(App);

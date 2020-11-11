@@ -5,13 +5,31 @@ import entityReducer from './entityReducer';
 import categoryReducer from './categoryReducer';
 import sessionReducer from './sessionReducer';
 
-export default combineReducers({
+// export default combineReducers({
+//   menu: menuReducer,
+//   entities: entityReducer,
+//   cart: cartReducer,
+//   categories: categoryReducer,
+//   session: sessionReducer,
+// });
+
+const combinedReducer = combineReducers({
   menu: menuReducer,
   entities: entityReducer,
   cart: cartReducer,
   categories: categoryReducer,
   session: sessionReducer,
 });
+
+const rootReducer = (state, action) => {
+  if (action.type === 'session/SIGN_OUT_SUCCESS') {
+    //если пользователь разлогинивается, удаляем стейт корзины
+    delete state.cart;
+  }
+  return combinedReducer(state, action);
+};
+
+export default rootReducer;
 
 //state
 //{

@@ -27,7 +27,7 @@ const middleware = [
 const menuPersistConfig = {
   key: 'menu',
   storage,
-  whitelist:  ['cart','entities', 'session'],
+  whitelist:  ['cart','session'],
 };
 
 const persistedReducer = persistReducer(menuPersistConfig, rootReducer);

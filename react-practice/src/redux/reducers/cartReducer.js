@@ -48,7 +48,9 @@ const amount = createReducer(
     },
     [actions.decreaseFromCart]: (state, { payload }) => ({
       ...state,
+      // [payload.id]: state[payload.id] ? state[payload.id] - 1 : 0,
       [payload.id]: state[payload.id] ? state[payload.id] - 1 : 0,
+
     }),
   },
 );

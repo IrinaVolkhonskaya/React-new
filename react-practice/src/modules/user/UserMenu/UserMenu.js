@@ -1,7 +1,7 @@
 import React, { Component, createRef } from 'react';
 import Dropdown from './Dropdown/Dropdown';
 import Avatar from '../Avatar/Avatar';
-import s from './Usermenu.module.css';
+import s from './UserMenu.module.css';
 
 // export default class UserMenu extends Component {
 //   containerRef = createRef();
@@ -68,9 +68,8 @@ import s from './Usermenu.module.css';
 //   }
 // }
 
-// import React from 'react';
+
 import Button from '../../../components/Auth/common/Button/Button';
-// import classes from './UserProfile.module.css';
 
 const UserMenu = ({ user: { name }, onSignOut = () => null }) => (
   <div className={s.container}>
@@ -82,7 +81,7 @@ const UserMenu = ({ user: { name }, onSignOut = () => null }) => (
       alt=""
     />
     <span className={s.name}>{name}</span>
-    {/* <Dropdown /> */}
+    <Dropdown />
 
     <Button label="Sign out" onClick={onSignOut} />
   </div>
