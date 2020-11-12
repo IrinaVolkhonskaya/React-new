@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import Logo from '../Logo/Logo';
 import UserMenu from '../../modules/user/UserMenu/UserMenu';
@@ -15,36 +15,33 @@ import * as operations from '../../redux/authOperations';
 
 import s from './Appheader.module.css';
 
-const AppHeader = ({ isAuthenticated, name, user, onSignOut }) => (
-  <header className={s.header}>
-    <div className={s.logo}>
-      <Logo image={appLogo} width={60} height={50} />
-    </div>
-    <Navigation items={navItems} />
-    {isAuthenticated ? <CartIcon isAuthenticated={isAuthenticated} /> : null}
-    <div className={s.usermenu}>
-      {isAuthenticated ? (
-        <UserMenu
-          isAuthenticated={isAuthenticated}
-          avatar={avatar}
-          onSignOut={onSignOut}
-          user={user}
-          name={name}
-        />
-      ) : (
-        <AuthNav />
-      )}
-    </div>
-  </header>
-);
+export default function AppHeader({ name }) {
+  const dispatch = useDispatch();
+  const user = useSelector(selectors.getUser);
+  const isAuthenticated = useSelector(selectors.isAuthenticated);
 
-const mapState = state => ({
-  isAuthenticated: selectors.isAuthenticated(state),
-  user: selectors.getUser(state),
-});
+  const onSignOut = () => dispatch(operations.signOut());
 
-const mapDispatch = {
-  onSignOut: operations.signOut,
-};
-
-export default connect(mapState, mapDispatch)(AppHeader);
+  return (
+    <header className={s.header}>
+      <div className={s.logo}>
+        <Logo image={appLogo} width={60} height={50} />
+      </div>
+      <Navigation items={navItems} />
+      {isAuthenticated ? <CartIcon isAuthenticated={isAuthenticated} /> : null}
+      <div className={s.usermenu}>
+        {isAuthenticated ? (
+          <UserMenu
+            isAuthenticated={isAuthenticated}
+            avatar={avatar}
+            onSignOut={onSignOut}
+            user={user}
+            name={name}
+          />
+        ) : (
+          <AuthNav />
+        )}
+      </div>
+    </header>
+  );
+}

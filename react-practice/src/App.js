@@ -1,15 +1,11 @@
 import React, { lazy, Suspense, Component } from 'react';
 import { connect } from 'react-redux';
-import { Switch } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 import PublicRoute from './components/PublicRoute/PublicRoute';
 import AppHeader from './components/AppHeader/AppHeader';
 import Loader from './components/Loader/Loader';
 import * as operations from './redux/authOperations';
-
-// import Modal from './Modal/Modal';
-// import Tabs from './Tabs/Tabs';
-// import tabsData from './components/Tabs/tabs.json';
 
 import routes from './configs/routes';
 
@@ -49,28 +45,11 @@ const AsyncSignUpPage = lazy(() =>
 );
 
 class App extends Component {
-  // state = {
-  // isModalOpen: false,
-  // };
   componentDidMount() {
     this.props.refreshCurrentUser();
   }
 
-  // componentDidMount() {
-  //   this.props.fetchMenuRequest(menu);// нужно забрать с бекенда
-  // }
-
-  // handleOpenModal = () => {
-  //   this.setState({ isModalOpen: true });
-  // };
-
-  // handleCloseModal = () => {
-  //   this.setState({ isModalOpen: false });
-  // };
-
   render() {
-    // const { isModalOpen } = this.state;
-
     return (
       <div>
         <h1>FOODY LOVE</h1>
@@ -94,7 +73,7 @@ class App extends Component {
               component={AsyncOrderHistoryPage}
             />
             <ProtectedRoute path={routes.CART} component={AsyncCartPage} />
-            <PublicRoute
+            <Route
               path={routes.SIGNIN}
               restricted
               component={AsyncSignInPage}
@@ -107,20 +86,7 @@ class App extends Component {
           </Suspense>
         </Switch>
 
-        {/* <div> */}
-        {/* <button type="button" onClick={this.handleOpenModal}>
-            Open Modal
-          </button>
-          {isModalOpen && (
-            <Modal
-              onClose={this.handleCloseModal}
-              isModalOpen={this.state.isModalOpen}
-            />
-          )} */}
-        {/* </div> */}
-
-        {/* <Tabs items={tabsData} />
-        <br /> */}
+        <br />
       </div>
     );
   }

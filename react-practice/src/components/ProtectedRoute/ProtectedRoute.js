@@ -3,7 +3,7 @@ import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as selectors from '../../redux/userSelectors';
 
-//если мартшрут защищенный(приватный) и пользователь залогинен, рендерит компонент.avatar
+//если мартшрут защищенный(приватный) и пользователь залогинен, рендерит компонент
 // в противном случае рендерит Redirect на /signin
 
 const ProtectedRoute = ({
@@ -14,7 +14,7 @@ const ProtectedRoute = ({
 }) => (
   <Route
     {...rest}
-    render={props => //props - это пропы раута (match, location, hystory)
+    render={props => //props - это пропы Route (match, location, hystory)
       isAuthenticated ? (
         <Component {...props} />
       ) : (
