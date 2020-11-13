@@ -94,8 +94,11 @@
 //   mapDispatch
 // )(SignUpForm);
 
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+
+
+// на хуках
+import React, { useState, Component } from 'react';
+import { useDispatch, connect } from 'react-redux';
 import * as operations from '../../redux/authOperations';
 import Form from './common/Form/Form';
 import Input from './common/Input/Input';
@@ -165,3 +168,80 @@ const mapDispatch = {
 };
 
 export default connect(null, mapDispatch)(SignUpForm);
+
+
+
+
+// export default function SignUpForm() {
+//   const dispatch = useDispatch();
+//   const onSignUp = () => dispatch(operations.signUp())
+
+//   const [name, setName] = useState('');
+//   const [email, setEmail] = useState('');
+//   const [password, setPassword] = useState('');
+
+//   const handleChangeName = evt => {
+//     setName(evt.target.value);
+//   };
+
+//   const handleChangeEmail = evt => {
+//     setEmail(evt.target.value);
+//   };
+
+//   const handleChangePassword = evt => {
+//     setPassword(evt.target.value);
+//   };
+
+//   const handleSubmit = evt => {
+//     evt.preventDefault();
+//     onSignUp();
+
+//     setName();
+//     setEmail();
+//     setPassword();
+//   };
+
+//   return (
+//     <Form onSubmit={handleSubmit}>
+//       <Label text="Name">
+//         <Input
+//           type="text"
+//           name="name"
+//           value={name}
+//           onChange={handleChangeName}
+//         />
+//       </Label>
+
+//       <Label text="Email">
+//         <Input
+//           type="email"
+//           name="email"
+//           value={email}
+//           onChange={handleChangeEmail}
+//           placeholder="example@mail.com"
+//         />
+//       </Label>
+
+//       <Label text="Password">
+//         <Input
+//           type="password"
+//           name="password"
+//           value={password}
+//           onChange={handleChangePassword}
+//         />
+//       </Label>
+
+//       <Button label="Sign Up" type="submit" />
+//     </Form>
+//   );
+// }
+
+// const mapDispatch = {
+//   onSubmit: operations.signUp,
+// };
+
+// export default connect(null, mapDispatch)(SignUpForm);
+
+
+//-----------------------------------------------------.
+

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 import PublicRoute from './components/PublicRoute/PublicRoute';
+// import Audio from './components/Audio/Audio';
 import AppHeader from './components/AppHeader/AppHeader';
 import Loader from './components/Loader/Loader';
 import * as operations from './redux/authOperations';
@@ -53,17 +54,30 @@ class App extends Component {
     return (
       <div>
         <h1>FOODY LOVE</h1>
+        {/* <Audio/> */}
         <AppHeader />
         <Switch>
           <Suspense fallback={Loader}>
-            <PublicRoute exact path={routes.MENU} component={AsyncMenuPage} />
-            <PublicRoute
-              path={routes.MENU_ITEM}
-              component={AsyncMenuItemPage}
-            />
-            <PublicRoute path={routes.ABOUT} component={AsyncAboutPage} />
-            <PublicRoute path={routes.CONTACT} component={AsyncContactPage} />
-            <PublicRoute path={routes.DELIVERY} component={AsyncDeliveryPage} />
+            <PublicRoute exact path={routes.MENU}>
+              <AsyncMenuPage />
+            </PublicRoute>
+
+            <PublicRoute path={routes.MENU_ITEM}>
+              <AsyncMenuItemPage />
+            </PublicRoute>
+
+            <PublicRoute path={routes.ABOUT}>
+              <AsyncAboutPage />
+            </PublicRoute>
+
+            <PublicRoute path={routes.CONTACT}>
+              <AsyncContactPage />
+            </PublicRoute>
+
+            <PublicRoute path={routes.DELIVERY}>
+              <AsyncDeliveryPage />
+            </PublicRoute>
+
             <ProtectedRoute
               path={routes.ACCOUNT}
               component={AsyncAccountPage}
@@ -78,11 +92,9 @@ class App extends Component {
               restricted
               component={AsyncSignInPage}
             />
-            <PublicRoute
-              path={routes.SIGNUP}
-              restricted
-              component={AsyncSignUpPage}
-            />
+            <PublicRoute path={routes.SIGNUP} restricted>
+              <AsyncSignUpPage />
+            </PublicRoute>
           </Suspense>
         </Switch>
 

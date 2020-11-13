@@ -15,6 +15,8 @@ import * as operations from '../../redux/authOperations';
 
 import s from './Appheader.module.css';
 
+
+
 export default function AppHeader({ name }) {
   const dispatch = useDispatch();
   const user = useSelector(selectors.getUser);
@@ -24,6 +26,7 @@ export default function AppHeader({ name }) {
 
   return (
     <header className={s.header}>
+
       <div className={s.logo}>
         <Logo image={appLogo} width={60} height={50} />
       </div>

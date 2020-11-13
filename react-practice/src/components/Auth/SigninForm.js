@@ -1,77 +1,3 @@
-// import React, { Component } from 'react';
-// import { connect } from 'react-redux';
-// import * as operations from '../../redux/authOperations';
-
-
-// const INITIAL_VALUE = {
-//   email: '',
-//   password: '',
-// };
-
-// class SignInForm extends Component {
-//   state = { ...INITIAL_VALUE };
-
-//   handleChange = e => {
-//     this.setState({
-//       [e.target.name]: e.target.value,
-//     });
-//   };
-
-//   handleSubmit = evt => {
-//     evt.preventDefault();
-
-//     console.log(this.state);
-
-//     this.reset();
-//   };
-
-//   reset() {
-//     this.setState({ ...INITIAL_VALUE });
-//   }
-
-//   render() {
-//     const { email, password } = this.state;
-
-//     return (
-//       <form onSubmit={this.handleSubmit}>
-//         <h2>SingIN</h2>
-//         <label>
-//           Email
-//           <input
-//             type="email"
-//             name="email"
-//             value={email}
-//             onChange={this.handleChange}
-//             placeholder="email"
-//           />
-//         </label>
-//         <br />
-//         <label>
-//           Password
-//           <input
-//             type="password"
-//             name="password"
-//             value={password}
-//             onChange={this.handleChange}
-//             placeholder="password"
-//           />
-//         </label>
-//         <br />
-//         <button onClick={this.handleSubmit}>Sign In</button>
-//       </form>
-//     );
-//   }
-// }
-
-// const mapDispatch = {
-//   onSubmit: operations.signIn
-// };
-
-// export default connect(
-//   null,
-//   mapDispatch
-// )(SignInForm);
-
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as operations from '../../redux/authOperations';
@@ -137,3 +63,71 @@ export default connect(
   null,
   mapDispatch
 )(SignInForm);
+
+
+//на hooks
+
+// import React, { useState, useCallback } from 'react';
+// import { useDispatch } from 'react-redux';
+// import * as operations from '../../redux/authOperations';
+// import Form from './common/Form/Form';
+// import Input from './common/Input/Input';
+// import Label from './common/Label/Label';
+// import Button from './common/Button/Button';
+
+
+// // const mapDispatch = {
+// //   onSubmit: operations.signIn,
+// // };
+
+// // export default connect(mapDispatch)(SignInForm);
+
+// export default function SignInForm() {
+//   const dispatch = useDispatch();
+//   const [email, setEmail] = useState('');
+  
+
+//   const handleEmailChange = useCallback(evt => {
+//     setEmail(evt.target.value);
+//   }, []);
+
+//   const [password, setPassword] = useState('');
+
+//   const handlePasswordChange = evt => {
+//     setPassword(evt.target.value);
+//   };
+
+//   const handleSubmit = evt => {
+//     evt.preventDefault();
+//      dispatch(operations.signIn(email, password));
+
+//   //   this.props.onSubmit({ ...this.state });
+//     // setEmail(email);
+//     // setPassword(password);
+//   };
+
+//   return (
+//     <Form onSubmit={handleSubmit}>
+//       <Label text="Email">
+//         <Input
+//           type="email"
+//           name="email"
+//           value={email}
+//           onChange={handleEmailChange}
+//           placeholder="example@mail.com"
+//         />
+//       </Label>
+
+//       <Label text="Password">
+//         <Input
+//           type="password"
+//           name="password"
+//           value={password}
+//           onChange={handlePasswordChange}
+//         />
+//       </Label>
+
+//       <Button label="Sign in" type="submit" />
+//     </Form>
+//   );
+// }
