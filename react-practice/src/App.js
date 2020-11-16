@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 import PublicRoute from './components/PublicRoute/PublicRoute';
-// import Audio from './components/Audio/Audio';
 import AppHeader from './components/AppHeader/AppHeader';
 import Loader from './components/Loader/Loader';
 import * as operations from './redux/authOperations';
@@ -54,7 +53,7 @@ class App extends Component {
     return (
       <div>
         <h1>FOODY LOVE</h1>
-        {/* <Audio/> */}
+
         <AppHeader />
         <Switch>
           <Suspense fallback={Loader}>
@@ -78,14 +77,14 @@ class App extends Component {
               <AsyncDeliveryPage />
             </PublicRoute>
 
-            <ProtectedRoute
-              path={routes.ACCOUNT}
-              component={AsyncAccountPage}
-            />
-            <ProtectedRoute
-              path={routes.ORDER_HISTORY}
-              component={AsyncOrderHistoryPage}
-            />
+            <ProtectedRoute path={routes.ACCOUNT}>
+              <AsyncAccountPage />
+            </ProtectedRoute>
+
+            <ProtectedRoute path={routes.ORDER_HISTORY}>
+              <AsyncOrderHistoryPage />
+            </ProtectedRoute>
+
             <ProtectedRoute path={routes.CART} component={AsyncCartPage} />
             <Route
               path={routes.SIGNIN}
