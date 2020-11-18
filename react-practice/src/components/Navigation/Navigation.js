@@ -1,13 +1,13 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-import styles from './Navigation.module.css';
+import s from './Navigation.module.css';
 
 const Navigation = ({ items = [] }) => (
-  <ul className={styles.nav}>
+  <ul className={s.nav}>
     {items.map(item => (
       <li key={item.name}>
-        <NavLink to={item.path} className={styles.link} activeClassName={styles.activeLink}>
+        <NavLink to={item.path} className={s.link} activeClassName={s.activeLink}>
           {item.name}
         </NavLink>
       </li>

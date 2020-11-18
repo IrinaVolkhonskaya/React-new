@@ -1,11 +1,34 @@
-import React from 'react';
-import OrderItem from './OrderItem';
-import s from './Orders.module.css';
+import React from "react";
+import OrderItem from "./OrderItem";
+// import s from './Orders.module.css';
+
+// import { makeStyles } from "@material-ui/core/styles";
+
+// import {
+//   Table,
+//   Button,
+//   TableBody,
+//   TableCell,
+//   TableContainer,
+//   TableHead,
+//   TableRow,
+//   Paper,
+// } from "@material-ui/core";
+
+// const useStyles = makeStyles((theme) => ({
+//   table: {
+//     maxWidth: 1000,
+//   },
+//   button: {
+//     margin: theme.spacing(1),
+//   },
+// }));
 
 const Orders = ({ items, onDelete, onShowMoreInfo }) => (
-  <table className={s.table}>
+  <table>
     <tbody>
       {items.map(item => (
+
         <tr key={item.id}>
           <td>
             <OrderItem
@@ -22,5 +45,4 @@ const Orders = ({ items, onDelete, onShowMoreInfo }) => (
     </tbody>
   </table>
 );
-
 export default Orders;

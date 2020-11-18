@@ -1,32 +1,50 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import routes from '../../configs/routes';
-import s from './MenuListView.module.css';
-import { Button } from '@material-ui/core';
+import React from "react";
+import { Link } from "react-router-dom";
+import routes from "../../configs/routes";
+import s from "./MenuListView.module.css";
+import { Button } from "@material-ui/core";
 
-const MenuList = ({ menu, addToCart }) => {
+import { Card } from "semantic-ui-react";
+
+export default function MenuList({ menu, addToCart }) {
   return (
     menu && (
-      <ul>
+      <Card.Group itemsPerRow={5}>
         {menu.map(({ id, image, name, price }) => (
-          <li key={id}>
-            <img className={s.image} src={image} alt="" />
-            <p>
-              <b>{name}</b>
-            </p>
-            <p>Цена:{price} грн</p>
+          <Card color="blue" raised image={image}>
+            <div key={id}>
+              <img className={s.image} src={image} alt="" />
+              <p>
+                <b className={s.name}>{name}</b>
+              </p>
+              <div>
+                <p className={s.price}>Цена: {price} грн</p>
 
-            <Link to={`${routes.MENU}/${id}`}>
-            <Button variant="contained" color="primary" size="small">Детальнее</Button>
-            </Link>
+                <Link to={`${routes.MENU}/${id}`}>
+                  <Button
+                    className={s.button}
+                    variant="contained"
+                    color="primary"
+                    size="small"
+                  >
+                    Детальнее
+                  </Button>
+                </Link>
 
-            <Button variant="contained" color="primary" size="small" onClick={() => addToCart(id)}>В корзину</Button>
-            <hr />
-          </li>
+                <Button
+                  className={s.button}
+                  variant="contained"
+                  color="primary"
+                  size="small"
+                  onClick={() => addToCart(id)}
+                >
+                  В корзину
+                </Button>
+              </div>
+            </div>
+          </Card>
         ))}
-      </ul>
+      </Card.Group>
     )
   );
-};
-
-export default MenuList;
+}

@@ -1,18 +1,21 @@
-import React from 'react';
+import React from "react";
 
-import { makeStyles } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
-import { Button } from '@material-ui/core';
+import { makeStyles } from "@material-ui/core/styles";
+
+import {
+  Table,
+  Button,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+} from "@material-ui/core";
 // import IconButton from '@material-ui/core/IconButton';
 // import DeleteIcon from '@material-ui/icons/Delete';
 
-import './Cart.css';
+import "./Cart.css";
 
 const useStyles = makeStyles((theme) => ({
   table: {
@@ -20,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     margin: theme.spacing(1),
-  }
+  },
 }));
 
 const CartView = ({
@@ -29,7 +32,6 @@ const CartView = ({
   addToCart,
   decreaseFromCart,
 }) => {
-
   const classes = useStyles();
   // console.log(`menuCart:`, menuCart);
   return menuCart.length > 0 ? (
@@ -45,23 +47,43 @@ const CartView = ({
           </TableRow>
         </TableHead>
         <TableBody>
-        {menuCart.map(({ id, name, amount, price }) => (
-          <TableRow key={id}>
-             <TableCell component="th" scope="row">{name} </TableCell>
-             <TableCell align="right">
-             <Button variant="outlined" size="small" onClick={() => addToCart(id)}>+</Button>
-              {amount}
-              <Button variant="outlined" size="small" onClick={() => decreaseFromCart(id)}>-</Button>
+          {menuCart.map(({ id, name, amount, price }) => (
+            <TableRow key={id}>
+              <TableCell component="th" scope="row">
+                {name}
+              </TableCell>
+              <TableCell align="right">
+                <Button
+                  variant="outlined"
+                  size="small"
+                  onClick={() => addToCart(id)}
+                >
+                  +
+                </Button>
+                {amount}
+                <Button
+                  variant="outlined"
+                  size="small"
+                  onClick={() => decreaseFromCart(id)}
+                >
+                  -
+                </Button>
               </TableCell>
               <TableCell align="right">{price} грн</TableCell>
-            <TableCell align="right">{amount * price} грн</TableCell>
-            <TableCell align="right">
-            <Button variant="outlined" size="small" onClick={() => removeFromCart(id)}>x</Button>
+              <TableCell align="right">{amount * price} грн</TableCell>
+              <TableCell align="right">
+                <Button
+                  variant="outlined"
+                  size="small"
+                  onClick={() => removeFromCart(id)}
+                >
+                  x
+                </Button>
               </TableCell>
-              </TableRow>
-        ))}
-    </TableBody>
-    </Table>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
     </TableContainer>
   ) : (
     <h1>В корзине нет товаров!</h1>
@@ -69,4 +91,3 @@ const CartView = ({
 };
 
 export default CartView;
-

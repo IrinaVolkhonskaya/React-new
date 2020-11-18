@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Orders from './Orders';
 import Loader from '../../../components/Loader/Loader';
-import * as API from '../../../services/orders-api';
+// import * as API from '../../../orders-api';
+import * as API from '../../.././services/orders-api';
 
 export default class OrdersPage extends Component {
   state = {

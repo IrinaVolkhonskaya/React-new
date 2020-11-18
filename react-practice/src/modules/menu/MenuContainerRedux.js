@@ -25,22 +25,3 @@ const mapDispatch = {
 };
 
 export default connect(mapState, mapDispatch)(MenuContainerRedux);
-
-// class MenuContainerRedux extends Component {
-//   componentDidMount() {
-//     this.props.fetchMenu();
-//   }
-
-//   render() {
-//     return <MenuList {...this.props} />;
-//   }
-// }
-
-// const mapState = state => ({
-//   menu: selectors.getItemsAndCategory(state),
-// });
-
-// const mapDispatch = {
-//   fetchMenu: menuOperations.fetchMenu,
-//   addToCart: actions.addToCart,
-// };

@@ -1,4 +1,24 @@
-import React from 'react';
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import {
+  Table,
+  Button,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+} from "@material-ui/core";
+
+const useStyles = makeStyles((theme) => ({
+  table: {
+    maxWidth: 1000,
+  },
+  button: {
+    margin: theme.spacing(1),
+  },
+}));
 
 const OrderItem = ({
   id,
@@ -8,35 +28,40 @@ const OrderItem = ({
   rating,
   onShowMoreInfo,
   onDelete,
-}) => (
-//   <div>
-    <table>
-      {/* <thead>
-        <th>Date: </th>
-        <th>Price: </th>
-        <th>Address: </th>
-        <th>Rating: </th>
-      </thead> */}
-      <tbody>
-        <tr key={id}>
-          <td>{date}</td>
-          <td>{price}</td>
-          <td>{address}</td>
-          <td>{rating}</td>
-          <td>
-            <button type="button" onClick={onShowMoreInfo}>
+}) => {
+  const classes = useStyles();
+  return <TableContainer component={Paper}>
+    <Table className={classes.table} size="small" aria-label="a dense table">
+     
+      <TableBody>
+        <TableRow key={id}>
+          <TableCell align="right">
+            {date}
+          </TableCell>
+          <TableCell align="right">
+            {price}
+          </TableCell>
+          <TableCell align="right">
+            {address}
+          </TableCell>
+          <TableCell align="right">
+            {rating}
+          </TableCell>
+          <TableCell align="right">
+            <Button variant="outlined" size="small" onClick={onShowMoreInfo}>
               Детальнее
-            </button>
-          </td>
-          <td>
-            <button type="button" onClick={onDelete}>
+            </Button>
+          </TableCell>
+          <TableCell align="right">
+            <Button variant="outlined" size="small" onClick={onDelete}>
               Удалить
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-//   </div>
-);
+            </Button>
+          </TableCell>
+        </TableRow>
+      </TableBody>
+    </Table>
+  </TableContainer>;
+  //   </div>
+};
 
 export default OrderItem;

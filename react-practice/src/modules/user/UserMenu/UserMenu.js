@@ -1,6 +1,6 @@
 import React, { Component, createRef } from 'react';
 import Dropdown from './Dropdown/Dropdown';
-import Avatar from '../Avatar/Avatar';
+// import Avatar from '../Avatar/Avatar';
 import s from './UserMenu.module.css';
 
 // export default class UserMenu extends Component {
@@ -69,21 +69,22 @@ import s from './UserMenu.module.css';
 // }
 
 
-import Button from '../../../components/Auth/common/Button/Button';
+// import Button from '../../../components/Auth/common/Button/Button';
+import { Button } from '@material-ui/core';
 
 const UserMenu = ({ user: { name }, onSignOut = () => null }) => (
   <div className={s.container}>
     <img
       className={s.image}
       src="https://www.redditstatic.com/new-icon.png"
-      widt="40"
+      width="40"
       height="40"
       alt=""
     />
     <span className={s.name}>{name}</span>
     <Dropdown />
 
-    <Button label="Sign out" onClick={onSignOut} />
+    <Button variant="contained" color="primary" size="small" label="Sign out" onClick={onSignOut}>SignOut</Button>
   </div>
 );
 

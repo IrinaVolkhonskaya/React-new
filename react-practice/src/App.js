@@ -7,6 +7,8 @@ import AppHeader from './components/AppHeader/AppHeader';
 import Loader from './components/Loader/Loader';
 import * as operations from './redux/authOperations';
 
+import "semantic-ui-css/semantic.min.css";
+
 import routes from './configs/routes';
 
 const AsyncMenuPage = lazy(() =>
@@ -52,7 +54,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <h1>FOODY LOVE</h1>
+        <h2>FOODY LOVE</h2>
 
         <AppHeader />
         <Switch>

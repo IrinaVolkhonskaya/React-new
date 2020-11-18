@@ -1,0 +1,11 @@
+.MuiButtonBase-root
+  MuiButton-root
+  MuiButton-contained
+  MuiButton-containedPrimary
+  MuiButton-containedSizeSmall
+  MuiButton-sizeSmall {
+  margin-left: 30px;
+  position: relative;
+
+  left: -10px;
+}

@@ -1,15 +1,28 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { actions, menuOperations } from '../../redux';
-import * as selectors from '../../redux/selectors';
-import s from './CategorySelector.module.css';
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { actions, menuOperations } from "../../redux";
+import * as selectors from "../../redux/selectors";
+
+import { makeStyles } from "@material-ui/core/styles";
+import FormControl from "@material-ui/core/FormControl";
+import InputLabel from '@material-ui/core/InputLabel';
+import Select from "@material-ui/core/Select";
+
+const useStyles = makeStyles((theme) => ({
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 120,
+  },
+}));
 
 export default function CategorySelectorContainer({ currentName }) {
+  const classes = useStyles();
+
   const dispatch = useDispatch();
   const getAllCategories = () => dispatch(menuOperations.getAllCategories());
 
   const categoryNames = useSelector(selectors.getCategoryNames); //["soup", "dessert", "salad", "main course"]
-  const onChangeCategory = currentName =>
+  const onChangeCategory = (currentName) =>
     dispatch(actions.selectCategory(currentName));
 
   useEffect(() => {
@@ -17,20 +30,26 @@ export default function CategorySelectorContainer({ currentName }) {
   }, []);
 
   return (
-    <select
-      className={s.select}
-      value={currentName}
-      onChange={e => onChangeCategory(e.target.value)}
-    >
-      {categoryNames.map(name => (
-        <option key={name} value={name}>
-          {name}
-        </option>
-      ))}
-    </select>
+    <div>
+      <FormControl required className={classes.formControl}>
+      <InputLabel>Категория</InputLabel>
+        <Select
+          native
+          value={currentName}
+          onChange={(e) => onChangeCategory(e.target.value)}
+        >
+          {categoryNames.map((name) => (
+            <option key={name} value={name}>
+              {name}
+            </option>
+          ))}
+        </Select>
+      </FormControl>
+    </div>
   );
 }
 
+//========================================================================
 // import React, { Component } from 'react';
 // import { connect } from 'react-redux';
 // import CategorySelectorView from './CategorySelectorView';

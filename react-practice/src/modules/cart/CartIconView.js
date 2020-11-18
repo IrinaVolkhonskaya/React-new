@@ -7,7 +7,7 @@ const CartIcon = ({ amount }) => (
     <Link to="/cart">
       <img
         src="https://image.flaticon.com/icons/svg/263/263142.svg"
-        width="60"
+        width="40"
         alt=""
       />
       <span className={s.amount}>{ amount }</span>
