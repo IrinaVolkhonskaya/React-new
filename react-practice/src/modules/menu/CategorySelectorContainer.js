@@ -8,6 +8,8 @@ import FormControl from "@material-ui/core/FormControl";
 import InputLabel from '@material-ui/core/InputLabel';
 import Select from "@material-ui/core/Select";
 
+import s from './CategorySelector.module.css';
+
 const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(1),
@@ -39,7 +41,7 @@ export default function CategorySelectorContainer({ currentName }) {
           onChange={(e) => onChangeCategory(e.target.value)}
         >
           {categoryNames.map((name) => (
-            <option key={name} value={name}>
+            <option className={s.select} key={name} value={name}>
               {name}
             </option>
           ))}

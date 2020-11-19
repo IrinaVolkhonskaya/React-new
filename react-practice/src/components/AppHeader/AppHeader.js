@@ -78,7 +78,6 @@ export default function AppHeader({ name }) {
             <AuthNav />
           )}
         </div>
-        {/* </header> */}
       </Header>
     </Segment>
   );

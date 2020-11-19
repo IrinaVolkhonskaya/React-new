@@ -2,7 +2,7 @@ import React from 'react';
 
 const AboutPage = () => (
   <div>
-    <h3>Что такое FOODY LOVE?</h3>
+    <h4>Что такое FOODY LOVE?</h4>
     <br />
     <p>
       <b>Классическая кухня в современной подаче. </b>

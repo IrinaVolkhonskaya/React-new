@@ -63,7 +63,7 @@ export default class OrdersPage extends Component {
         <button type="button" onClick={this.handleAddOrderItem}>
           Добавить новый заказ
         </button>
-        <h2>Orders History</h2>
+        <h4>Orders History</h4>
         {isLoading ? (
           <Loader />
         ) : (

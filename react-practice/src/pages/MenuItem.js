@@ -3,7 +3,7 @@ import MenuItemContainer from '../modules/menu/MenuItemContainer';
 
 const MenuItemPage = () => (
   <div>
-    <h2>Menu Item page</h2>
+    <h4>Menu Item page</h4>
 
     <MenuItemContainer />
   </div>

@@ -1,91 +1,67 @@
-import React, { Component, createRef } from 'react';
-import Dropdown from './Dropdown/Dropdown';
-// import Avatar from '../Avatar/Avatar';
-import s from './UserMenu.module.css';
+//on hooks
+import React, { useState, useEffect, useRef } from "react";
+import Dropdown from "./Dropdown/Dropdown";
+import { Button } from "@material-ui/core";
 
-// export default class UserMenu extends Component {
-//   containerRef = createRef();
-//   state = {
-//     isDropDownOpen: false,
-    
-//   };
-
-//   componentDidMount() {
-//     window.addEventListener('click', this.handleWindowClick);
-//   }
-//   //сравниваем где был клик, если по выпадающему Dropdown повторно, то не будет рендериться заново страница, так как измненений нет
-//   shouldComponentUpdate(nextProps, nextState) {
-//     const { isDropDownOpen } = this.state;
-
-//     return nextState.isDropDownOpen !== isDropDownOpen;
-//   }
-
-//   componentWillUnmount() {
-//     window.removeEventListener('click', this.handleWindowClick);
-//   }
-
-//   handleWindowClick = e => {
-//     // console.log(this.containerRef.current);
-
-//     const isTargetInsideContainer = this.containerRef.current.contains(
-//       e.target,
-//     );
-//     const { isDropDownOpen } = this.state;
-//     if (isDropDownOpen && !isTargetInsideContainer) {
-//       this.handleCloseDropdown();
-//     }
-//   };
-
-//   handleOpenDropdown = () => {
-//     this.setState({ isDropDownOpen: true });
-//   };
-
-//   handleCloseDropdown = () => {
-//     this.setState({ isDropDownOpen: false });
-//   };
-
-//   handleToggleDropDown = () => {
-//     this.setState(state => ({
-//       isDropDownOpen: !state.isDropDownOpen,
-//     }));
-//   };
-
-//   render() {
-//     const { isDropDownOpen } = this.state;
-//     const { name, avatar } = this.props;
-
-//     return (
-//       <div
-//         className={s.container}
-//         onClick={this.handleOpenDropdown}
-//         ref={this.containerRef}
-//       >
-//         <Avatar image={avatar} />
-//         <span className={s.name}>{name}</span>
-//         {isDropDownOpen && <Dropdown />}
-//       </div>
-//     );
-//   }
-// }
+import s from "./UserMenu.module.css";
+import './UserMenu.css';
 
 
-// import Button from '../../../components/Auth/common/Button/Button';
-import { Button } from '@material-ui/core';
+export default function UserMenu({ user: { name }, onSignOut = () => null }) {
+  const [isDropDownOpen, setIsDropDownOpen] = useState(false);
+  const containerRef = useRef();
 
-const UserMenu = ({ user: { name }, onSignOut = () => null }) => (
-  <div className={s.container}>
-    <img
-      className={s.image}
-      src="https://www.redditstatic.com/new-icon.png"
-      width="40"
-      height="40"
-      alt=""
-    />
-    <span className={s.name}>{name}</span>
-    <Dropdown />
+  useEffect(() => {
+    window.addEventListener("click", handleWindowClick);
 
-    <Button variant="contained" color="primary" size="small" label="Sign out" onClick={onSignOut}>SignOut</Button>
-  </div>
-);
+    return () => {
+      window.removeEventListener("click", handleWindowClick);
+    };
+  });
 
-export default UserMenu;
+  const handleWindowClick = (e) => {
+    console.log(`containerRef.current: `, containerRef.current);
+
+    const isTargetInsideContainer = containerRef.current.contains(e.target);
+
+    if (isDropDownOpen && !isTargetInsideContainer) {
+      handleCloseDropdown();
+    }
+  };
+
+  const handleOpenDropdown = () => {
+    setIsDropDownOpen(true);
+  };
+
+  const handleCloseDropdown = () => {
+    setIsDropDownOpen(false);
+  };
+
+  return (
+    <div
+      className={s.container}
+      onClick={handleOpenDropdown}
+      ref={containerRef}
+    >
+      <img
+        className={s.image}
+        src="https://www.redditstatic.com/new-icon.png"
+        width="40"
+        height="40"
+        alt=""
+      />
+      <span className={s.name}>{name}</span>
+      {isDropDownOpen && <Dropdown />}
+      <Button
+        variant="contained"
+        color="primary"
+        size="small"
+        label="Sign out"
+        onClick={onSignOut}
+      >
+        SignOut
+      </Button>
+    </div>
+  );
+}
+

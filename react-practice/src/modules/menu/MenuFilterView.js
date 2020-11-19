@@ -1,9 +1,9 @@
 import React from 'react';
-import s from './MenuFilter.module.css';
+import { Input } from 'semantic-ui-react'
+import './MenuFilter.css';
 
 const MenuFilterView = ({ value = '', onChange = () => null }) => (
-  <input
-    className={s.filter}
+  <Input
     value={value}
     onChange={e => {
       // console.log(value);
@@ -11,7 +11,7 @@ const MenuFilterView = ({ value = '', onChange = () => null }) => (
       return onChange(e.target.value);
     }}
     type="text"
-    placeholder="Поиск блюда..."
+    placeholder="Поиск..."
   />
 );
 

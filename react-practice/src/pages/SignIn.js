@@ -15,9 +15,9 @@ class SignIn extends Component {
   render() {
     return (
       <div>
-        <h1 style={{ textAlign: 'center', fontWeight: 500 }}>
+        <h3 style={{ textAlign: 'center', fontWeight: 500 }}>
           Please enter your credentials
-        </h1>
+        </h3>
         <SignInForm />
       </div>
     );

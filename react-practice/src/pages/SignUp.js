@@ -4,9 +4,9 @@ import SignUpForm from '../components/Auth/SignUpForm';
 export default function SignUp() {
   return (
     <div>
-      <h1 style={{ textAlign: 'center', fontWeight: 500 }}>
+      <h3 style={{ textAlign: 'center', fontWeight: 500 }}>
         Create your account for free
-      </h1>
+      </h3>
       <SignUpForm />
     </div>
   );

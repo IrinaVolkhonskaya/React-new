@@ -2,7 +2,7 @@ import React from 'react';
 
 const ContactPage = () => (
   <div>
-    <h2>Наша команда</h2>
+    <h4>Наша команда</h4>
 
     <img
       src="https://www.firestock.ru/download/s/0ts5b93vxd71awt/6.jpg"
