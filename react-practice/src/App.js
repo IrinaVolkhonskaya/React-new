@@ -6,6 +6,7 @@ import PublicRoute from './components/PublicRoute/PublicRoute';
 import AppHeader from './components/AppHeader/AppHeader';
 import Loader from './components/Loader/Loader';
 import * as operations from './redux/authOperations';
+import './App.css';
 
 import "semantic-ui-css/semantic.min.css";
 
@@ -54,7 +55,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <h2>FOODY LOVE</h2>
+        <h2 class="header">FOODY LOVE</h2>
 
         <AppHeader />
         <Switch>

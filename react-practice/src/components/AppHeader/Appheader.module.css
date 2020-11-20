@@ -14,3 +14,9 @@
 .usermenu {
   margin-left: auto;
 }
+
+.ui segment {
+    position: fixed;
+    z-index: 1000;
+    margin-top: 60px; 
+}

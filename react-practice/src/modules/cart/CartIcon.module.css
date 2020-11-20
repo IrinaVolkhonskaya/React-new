@@ -1,5 +1,7 @@
 .container {
   position: relative;
+  left: 900px;
+  bottom: 90px;
 }
 
 .amount {
