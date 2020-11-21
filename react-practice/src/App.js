@@ -55,7 +55,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <h2 class="header">FOODY LOVE</h2>
+        <h2 className="header">FOODY LOVE</h2>
 
         <AppHeader />
         <Switch>

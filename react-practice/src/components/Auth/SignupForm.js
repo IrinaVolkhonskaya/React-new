@@ -1,3 +1,72 @@
+// на хуках
+import React, { useState, useCallback } from "react";
+import { useDispatch } from "react-redux";
+import * as operations from "../../redux/authOperations";
+import Form from "./common/Form/Form";
+import Input from "./common/Input/Input";
+import Label from "./common/Label/Label";
+import Button from "./common/Button/Button";
+
+export default function SignUpForm() {
+  const dispatch = useDispatch();
+
+  const [name, setName] = useState("");
+  const handleNameChange = (evt) => {
+    setName(evt.target.value);
+  };
+
+  const [email, setEmail] = useState("");
+  const handleEmailChange = useCallback((evt) => {
+    setEmail(evt.target.value);
+  }, []);
+
+  const [password, setPassword] = useState("");
+  const handlePasswordChange = (evt) => {
+    setPassword(evt.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    dispatch(operations.signUp({ name, email, password }));
+  };
+
+  return (
+    <Form onSubmit={handleSubmit}>
+      <Label text="Name">
+        <Input
+          type="text"
+          name="name"
+          value={name}
+          onChange={handleNameChange}
+        />
+      </Label>
+
+      <Label text="Email">
+        <Input
+          type="email"
+          name="email"
+          value={email}
+          onChange={handleEmailChange}
+          placeholder="example@mail.com"
+        />
+      </Label>
+
+      <Label text="Password">
+        <Input
+          type="password"
+          name="password"
+          value={password}
+          onChange={handlePasswordChange}
+        />
+      </Label>
+
+      <Button label="Sign Up" type="submit" />
+    </Form>
+  );
+}
+
+
 // import React, { Component } from 'react';
 // import { connect } from 'react-redux';
 // import * as operations from '../../redux/authOperations';
@@ -93,155 +162,4 @@
 //   null,
 //   mapDispatch
 // )(SignUpForm);
-
-
-
-// на хуках
-import React, { useState, Component } from 'react';
-import { useDispatch, connect } from 'react-redux';
-import * as operations from '../../redux/authOperations';
-import Form from './common/Form/Form';
-import Input from './common/Input/Input';
-import Label from './common/Label/Label';
-import Button from './common/Button/Button';
-
-const INITIAL_STATE = { name: '', email: '', password: '' };
-
-class SignUpForm extends Component {
-  state = { ...INITIAL_STATE };
-
-  handleChange = ({ target: { name, value } }) => {
-    this.setState({
-      [name]: value,
-    });
-  };
-
-  handleSubmit = e => {
-    e.preventDefault();
-
-    this.props.onSubmit({ ...this.state });
-
-    this.setState({ ...INITIAL_STATE });
-  };
-
-  render() {
-    const { name, email, password } = this.state;
-
-    return (
-      <Form onSubmit={this.handleSubmit}>
-        <Label text="Name">
-          <Input
-            type="text"
-            name="name"
-            value={name}
-            onChange={this.handleChange}
-          />
-        </Label>
-
-        <Label text="Email">
-          <Input
-            type="email"
-            name="email"
-            value={email}
-            onChange={this.handleChange}
-            placeholder="example@mail.com"
-          />
-        </Label>
-
-        <Label text="Password">
-          <Input
-            type="password"
-            name="password"
-            value={password}
-            onChange={this.handleChange}
-          />
-        </Label>
-
-        <Button label="Sign Up" type="submit" />
-      </Form>
-    );
-  }
-}
-
-const mapDispatch = {
-  onSubmit: operations.signUp,
-};
-
-export default connect(null, mapDispatch)(SignUpForm);
-
-
-
-
-// export default function SignUpForm() {
-//   const dispatch = useDispatch();
-//   const onSignUp = () => dispatch(operations.signUp())
-
-//   const [name, setName] = useState('');
-//   const [email, setEmail] = useState('');
-//   const [password, setPassword] = useState('');
-
-//   const handleChangeName = evt => {
-//     setName(evt.target.value);
-//   };
-
-//   const handleChangeEmail = evt => {
-//     setEmail(evt.target.value);
-//   };
-
-//   const handleChangePassword = evt => {
-//     setPassword(evt.target.value);
-//   };
-
-//   const handleSubmit = evt => {
-//     evt.preventDefault();
-//     onSignUp();
-
-//     setName();
-//     setEmail();
-//     setPassword();
-//   };
-
-//   return (
-//     <Form onSubmit={handleSubmit}>
-//       <Label text="Name">
-//         <Input
-//           type="text"
-//           name="name"
-//           value={name}
-//           onChange={handleChangeName}
-//         />
-//       </Label>
-
-//       <Label text="Email">
-//         <Input
-//           type="email"
-//           name="email"
-//           value={email}
-//           onChange={handleChangeEmail}
-//           placeholder="example@mail.com"
-//         />
-//       </Label>
-
-//       <Label text="Password">
-//         <Input
-//           type="password"
-//           name="password"
-//           value={password}
-//           onChange={handleChangePassword}
-//         />
-//       </Label>
-
-//       <Button label="Sign Up" type="submit" />
-//     </Form>
-//   );
-// }
-
-// const mapDispatch = {
-//   onSubmit: operations.signUp,
-// };
-
-// export default connect(null, mapDispatch)(SignUpForm);
-
-
-//-----------------------------------------------------.
 
