@@ -11,7 +11,10 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.19.2",
+    "chai": "^4.2.0",
+    "enzyme": "^3.11.0",
     "eslint-plugin-jsx-a11y": "^6.4.1",
+    "expect": "^26.6.2",
     "json-server": "^0.16.3",
     "node-sass": "^5.0.0",
     "normalizr": "^3.6.1",
@@ -57,11 +60,15 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-transform-react-jsx": "^7.12.7",
+    "chai-enzyme": "^1.0.0-beta.1",
+    "enzyme-adapter-react-16": "^1.15.5",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.21.5",
-    "prettier": "^2.1.2"
+    "prettier": "^2.1.2",
+    "react-test-renderer": "^17.0.1"
   }
 }

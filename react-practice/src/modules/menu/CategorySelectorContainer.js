@@ -5,10 +5,10 @@ import * as selectors from "../../redux/selectors";
 
 import { makeStyles } from "@material-ui/core/styles";
 import FormControl from "@material-ui/core/FormControl";
-import InputLabel from '@material-ui/core/InputLabel';
-import Select from "@material-ui/core/Select";
+import InputLabel from "@material-ui/core/InputLabel";
+import NativeSelect from "@material-ui/core/NativeSelect";
 
-import s from './CategorySelector.module.css';
+import s from "./CategorySelector.module.css";
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -34,9 +34,11 @@ export default function CategorySelectorContainer({ currentName }) {
 
   return (
     <div>
-      <FormControl required className={classes.formControl}>
-      <InputLabel>Категория</InputLabel>
-        <Select
+      <FormControl className={classes.formControl}>
+        <InputLabel shrink htmlFor="age-native-label-placeholder">
+          Категория
+        </InputLabel>
+        <NativeSelect
           native
           value={currentName}
           onChange={(e) => onChangeCategory(e.target.value)}
@@ -46,7 +48,7 @@ export default function CategorySelectorContainer({ currentName }) {
               {name}
             </option>
           ))}
-        </Select>
+        </NativeSelect>
       </FormControl>
     </div>
   );

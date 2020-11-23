@@ -1,7 +1,9 @@
 import React from 'react';
+import s from './Delivery.module.css';
+
 
 const DeliveryPage = () => (
-  <div>
+  <div className={s.delivery}>
     <h4>Доставка осуществляется только по Киеву</h4>
     <p>
       Стоимость доставки: 90 грн (доставка в течение 3-х часов с момента заказа)

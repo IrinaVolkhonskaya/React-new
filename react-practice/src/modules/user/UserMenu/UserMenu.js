@@ -53,6 +53,7 @@ export default function UserMenu({ user: { name }, onSignOut = () => null }) {
       <span className={s.name}>{name}</span>
       {isDropDownOpen && <Dropdown />}
       <Button
+      className="button_signout"
         variant="contained"
         color="primary"
         size="small"

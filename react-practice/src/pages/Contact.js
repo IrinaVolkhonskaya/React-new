@@ -1,7 +1,8 @@
 import React from 'react';
+import s from './Contact.module.css';
 
 const ContactPage = () => (
-  <div>
+  <div className={s.contact}>
     <h4>Наша команда</h4>
 
     <img

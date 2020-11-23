@@ -1,3 +1,4 @@
+// на хуках
 import React, { useState, useCallback } from "react";
 import { useDispatch } from "react-redux";
 import * as operations from "../../redux/authOperations";
@@ -22,10 +23,6 @@ export default function SignInForm() {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     dispatch(operations.signIn({ email, password }));
-
-    //   this.props.onSubmit({ ...this.state });
-    // setEmail(email);
-    // setPassword(password);
   };
 
   return (

@@ -1,7 +1,8 @@
 import React from 'react';
+import s from './About.module.css';
 
 const AboutPage = () => (
-  <div>
+  <div className={s.about}>
     <h4>Что такое FOODY LOVE?</h4>
     <br />
     <p>

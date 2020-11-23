@@ -35,7 +35,7 @@ const ids = createReducer([], {
 //   }
 // }
 
-const amount = createReducer(
+export const amount = createReducer(
   {},
   {
     [actions.addToCart]: (state, { payload }) => ({
