@@ -1,9 +1,9 @@
-import React from 'react';
-import s from './MenuListView.module.css';
+import React from "react";
+import s from "./MenuListView.module.css";
 
 const MenuItemView = ({ id, name, image, price, description }) => {
   return (
-    <div>
+    <div className="menuItem">
       Menu Item ID: {id}
       <h3>{name}</h3>
       <div key={id}>

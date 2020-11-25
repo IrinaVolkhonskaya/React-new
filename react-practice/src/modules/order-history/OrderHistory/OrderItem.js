@@ -6,7 +6,6 @@ import {
   TableBody,
   TableCell,
   TableContainer,
-  TableHead,
   TableRow,
   Paper,
 } from "@material-ui/core";
@@ -30,37 +29,30 @@ const OrderItem = ({
   onDelete,
 }) => {
   const classes = useStyles();
-  return <TableContainer component={Paper}>
-    <Table className={classes.table} size="small" aria-label="a dense table">
-     
-      <TableBody>
-        <TableRow key={id}>
-          <TableCell align="right">
-            {date}
-          </TableCell>
-          <TableCell align="right">
-            {price}
-          </TableCell>
-          <TableCell align="right">
-            {address}
-          </TableCell>
-          <TableCell align="right">
-            {rating}
-          </TableCell>
-          <TableCell align="right">
-            <Button variant="outlined" size="small" onClick={onShowMoreInfo}>
-              Детальнее
-            </Button>
-          </TableCell>
-          <TableCell align="right">
-            <Button variant="outlined" size="small" onClick={onDelete}>
-              Удалить
-            </Button>
-          </TableCell>
-        </TableRow>
-      </TableBody>
-    </Table>
-  </TableContainer>;
+  return (
+    <TableContainer component={Paper}>
+      <Table className={classes.table} size="small" aria-label="a dense table">
+        <TableBody>
+          <TableRow key={id}>
+            <TableCell align="right">{date}</TableCell>
+            <TableCell align="right">{price}</TableCell>
+            <TableCell align="right">{address}</TableCell>
+            <TableCell align="right">{rating}</TableCell>
+            <TableCell align="right">
+              <Button variant="outlined" size="small" onClick={onShowMoreInfo}>
+                Детальнее
+              </Button>
+            </TableCell>
+            <TableCell align="right">
+              <Button variant="outlined" size="small" onClick={onDelete}>
+                Удалить
+              </Button>
+            </TableCell>
+          </TableRow>
+        </TableBody>
+      </Table>
+    </TableContainer>
+  );
   //   </div>
 };
 

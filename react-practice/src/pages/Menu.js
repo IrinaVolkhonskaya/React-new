@@ -1,6 +1,6 @@
 import React from 'react';
 import CategorySelectorContainer from '../modules/menu/CategorySelectorContainer';
-import MenuContainer from '../modules/menu/MenuContainerRedux';
+import MenuContainer from '../modules/menu/MenuContainer';
 import MenuFilterContainer from '../modules/menu/MenuFilterContainer';
 
 const MenuPage = () => (
