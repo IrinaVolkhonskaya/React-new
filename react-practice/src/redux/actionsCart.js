@@ -9,6 +9,7 @@ import { createAction } from '@reduxjs/toolkit';
 
 const addToCart = createAction('cart/ADD_TO_CART', id => {
   return {
+    
     payload: {
       id,
     },

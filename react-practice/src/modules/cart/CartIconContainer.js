@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import CartIconView from './CartIconView';
+import CartIconView from './CartIconView.tsx';
 import * as selectors from '../../redux/selectors';
 
 const mapState = state => ({
