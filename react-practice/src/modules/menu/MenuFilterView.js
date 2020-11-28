@@ -2,6 +2,11 @@ import React from 'react';
 import { Input } from 'semantic-ui-react'
 import './MenuFilter.css';
 
+// type MenuFilterViewType = {
+//   value: string,
+//   onChange: Function
+// }
+
 const MenuFilterView = ({ value = '', onChange = () => null }) => (
   <Input
     value={value}

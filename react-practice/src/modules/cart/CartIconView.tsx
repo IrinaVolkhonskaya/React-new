@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import s from "./CartIcon.module.css";
 
 type CartIconViewProps = {
-  amount: any[]
+  amount: number,
 }
 
-const CartIcon: React.FC<CartIconViewProps> = ({ amount }) => (
+const CartIcon = ({ amount }: CartIconViewProps ) => (
   <div className={s.container}>
     <Link to="/cart">
       <img

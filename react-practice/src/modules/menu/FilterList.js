@@ -1,4 +1,12 @@
-import React from 'react';
+import React from "react";
+
+// interface FilterListType {
+//   menuJson: number[]
+// //  id: number,
+// //  name: string,
+// //  image: string,
+// //  price: number,
+// }
 
 const FilterList = ({ menuJson }) => (
   <ul>

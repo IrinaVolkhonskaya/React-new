@@ -26,6 +26,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
+
 const CartView = ({
   menuCart = [],
   removeFromCart,
@@ -89,5 +91,6 @@ const CartView = ({
     <h5>В корзине нет товаров!</h5>
   );
 };
+
 
 export default CartView;

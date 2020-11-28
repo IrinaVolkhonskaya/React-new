@@ -1,6 +1,6 @@
 // import React, { Component } from 'react';
 import { connect } from "react-redux";
-import MenuItemView from "./MenuItemView";
+import MenuItemView from "./MenuItemView.tsx";
 import selectors from "../../redux/selectors";
 
 const mapState = (state, ownProps) => {

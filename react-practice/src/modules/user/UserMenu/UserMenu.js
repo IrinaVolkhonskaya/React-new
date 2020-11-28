@@ -20,7 +20,7 @@ export default function UserMenu({ user: { name }, onSignOut = () => null }) {
   });
 
   const handleWindowClick = (e) => {
-    console.log(`containerRef.current: `, containerRef.current);
+    // console.log(`containerRef.current: `, containerRef.current);
 
     const isTargetInsideContainer = containerRef.current.contains(e.target);
 
