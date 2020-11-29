@@ -3,7 +3,13 @@ import { NavLink } from 'react-router-dom';
 
 import s from './Navigation.module.css';
 
-const Navigation = ({ items = [] }) => (
+// type NavigationType = {
+//   items: [],
+//   name: string,
+//   path: string,
+// }
+
+const Navigation = ({ items = [] } ) => (
   <ul className={s.nav}>
     {items.map(item => (
       <li key={item.name}>

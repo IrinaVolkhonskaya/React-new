@@ -1,4 +1,4 @@
-import MenuFilterView from './MenuFilterView.js';
+import MenuFilterView from './MenuFilterView.tsx';
 import { connect } from 'react-redux';
 import * as selectors from '../../redux/selectors';
 import actions from '../../redux/actionsMenu';

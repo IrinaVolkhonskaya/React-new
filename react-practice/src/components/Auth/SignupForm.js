@@ -3,7 +3,7 @@ import React, { useState, useCallback } from "react";
 import { useDispatch } from "react-redux";
 import * as operations from "../../redux/authOperations";
 import Form from "./common/Form/Form";
-import Input from "./common/Input/Input";
+import Input from "./common/Input/Input.tsx";
 import Label from "./common/Label/Label";
 import Button from "./common/Button/Button";
 

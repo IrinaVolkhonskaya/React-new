@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import Logo from "../Logo/Logo";
 import UserMenu from "../../modules/user/UserMenu/UserMenu";
-import Navigation from "../Navigation/Navigation";
+import Navigation from "../Navigation/Navigation.js";
 import AuthNav from "../Auth/AuthNav.tsx";
 import CartIcon from "../../modules/cart/CartIconContainer";
 import appLogo from "./assets/logo.png";
