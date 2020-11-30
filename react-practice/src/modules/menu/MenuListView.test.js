@@ -1,5 +1,5 @@
 import React from "react";
-import MenuListView from "./MenuListView";
+import MenuListView from "./MenuListView.tsx";
 import { shallow } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import Enzyme from "enzyme";

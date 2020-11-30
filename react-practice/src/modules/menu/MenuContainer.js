@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import MenuList from "./MenuListView";
+import MenuList from "./MenuListView.tsx";
 import { menuOperations } from "../../redux";
 import * as selectors from "../../redux/selectors";
 import actions from "../../redux/actionsCart";
