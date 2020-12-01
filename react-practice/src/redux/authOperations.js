@@ -10,7 +10,7 @@ import {
   signOutSuccess,
   refreshUserStart,
   refreshUserSuccess
-} from './actionsAuth';
+} from './actionsAuth.ts';
 import * as selectors from './userSelectors';
 
 axios.defaults.baseURL = 'http://localhost:4040';

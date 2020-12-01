@@ -1,7 +1,7 @@
 import { createReducer } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
 // import { actionTypes } from '../actionsAuth';
-import * as actions from '../actionsAuth';
+import * as actions from '../actionsAuth.ts';
 
 // session: {
 //   user: null,

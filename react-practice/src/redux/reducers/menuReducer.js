@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import { createReducer } from '@reduxjs/toolkit';
 // import { actionTypes } from '../actionsMenu';
-import actions from '../actionsMenu';
+import actions from '../actionsMenu.js';
 
 const menuItemsReducer = createReducer([], {
   [actions.fetchMenuSuccess]: (state, { payload }) => payload.ids.menu,

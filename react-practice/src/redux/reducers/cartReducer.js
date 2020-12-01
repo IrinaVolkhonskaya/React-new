@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import { createReducer } from '@reduxjs/toolkit';
 // import { actionTypes } from '../actionsCart';
-import actions from '../actionsCart';
+import actions from '../actionsCart.ts';
 
 // console.log(actions);
 //карта корзины
@@ -12,6 +12,7 @@ import actions from '../actionsCart';
 //         2: 7
 //     }
 // }
+
 
 const ids = createReducer([], {
   [actions.addToCart]: (state, { payload }) =>

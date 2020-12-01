@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 // import { actionTypes } from '../actionsMenu';
 import { createReducer} from '@reduxjs/toolkit';
-import actions from '../actionsMenu';
+import actions from '../actionsMenu.js';
 
 
 const items = createReducer([], {

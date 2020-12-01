@@ -1,5 +1,5 @@
 import React from "react";
-import Loader from "./Loader";
+import Loader from "./Loader.tsx";
 
 import { shallow } from "enzyme";
 import Enzyme from "enzyme";

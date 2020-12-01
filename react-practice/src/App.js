@@ -4,7 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 import PublicRoute from './components/PublicRoute/PublicRoute';
 import AppHeader from './components/AppHeader/AppHeader';
-import Loader from './components/Loader/Loader';
+import Loader from './components/Loader/Loader.tsx';
 import * as operations from './redux/authOperations';
 import './App.css';
 

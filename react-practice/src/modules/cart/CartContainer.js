@@ -3,7 +3,7 @@ import CartView from './CartView';
 import * as selectors from '../../redux/selectors';
 import actions from '../../redux/actionsCart';
 
-const mapState = state => ({
+const mapState = (state) => ({
   menuCart: selectors.getCartMenuItems(state),
 });
 
@@ -14,4 +14,4 @@ const mapDispatch = {
   decreaseFromCart: actions.decreaseFromCart,
 };
 
-export default connect(mapState, mapDispatch)(CartView);
+export default connect<(mapState, mapDispatch)(CartView);

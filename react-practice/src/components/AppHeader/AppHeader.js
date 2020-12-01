@@ -5,7 +5,7 @@ import Logo from "../Logo/Logo";
 import UserMenu from "../../modules/user/UserMenu/UserMenu";
 import Navigation from "../Navigation/Navigation.js";
 import AuthNav from "../Auth/AuthNav.tsx";
-import CartIcon from "../../modules/cart/CartIconContainer";
+import CartIcon from "../../modules/cart/CartIconContainer.ts";
 import appLogo from "./assets/logo.png";
 import avatar from "./assets/avatar.jpg";
 import navItems from "../../configs/main-nav";
