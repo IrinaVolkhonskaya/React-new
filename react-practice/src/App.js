@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 import PublicRoute from './components/PublicRoute/PublicRoute';
-import AppHeader from './components/AppHeader/AppHeader';
-import Loader from './components/Loader/Loader.tsx';
+import AppHeader from './components/AppHeader/AppHeader.js';
+import Loader from './components/Loader/Loader';
 import * as operations from './redux/authOperations';
 import './App.css';
 
@@ -46,6 +46,7 @@ const AsyncSignInPage = lazy(() =>
 const AsyncSignUpPage = lazy(() =>
   import('./pages/SignUp' /*webpackChunkName: "signUp-page"*/),
 );
+
 
 class App extends Component {
   componentDidMount() {

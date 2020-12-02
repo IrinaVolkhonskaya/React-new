@@ -1,4 +1,4 @@
-import { normalize, NormalizedSchema } from 'normalizr';
+import { normalize } from 'normalizr';
 import * as schemas from './schemas';
 import { createAction } from '@reduxjs/toolkit';
 

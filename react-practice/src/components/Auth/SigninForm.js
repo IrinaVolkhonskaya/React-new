@@ -3,15 +3,29 @@ import React, { useState, useCallback } from "react";
 import { useDispatch } from "react-redux";
 import * as operations from "../../redux/authOperations";
 import Form from "./common/Form/Form";
-import Input from "./common/Input/Input.tsx";
+import Input from "./common/Input/Input";
 import Label from "./common/Label/Label";
 import Button from "./common/Button/Button";
+
+// interface IInput {
+//   type: string,
+//   name: string,
+//   value: string,
+//   onChange?: () => void | null,
+//   placeholder: string,
+// }
+
+// interface IForm {
+//   onSubmit: () => void
+// } 
+
 
 export default function SignInForm() {
   const dispatch = useDispatch();
 
   const [email, setEmail] = useState("");
   const handleEmailChange = useCallback((evt) => {
+   
     setEmail(evt.target.value);
   }, []);
 
@@ -20,7 +34,7 @@ export default function SignInForm() {
     setPassword(evt.target.value);
   };
 
-  const handleSubmit = (evt) => {
+  const handleSubmit = (evt)  => {
     evt.preventDefault();
     dispatch(operations.signIn({ email, password }));
   };

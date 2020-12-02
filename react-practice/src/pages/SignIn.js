@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as selectors from '../redux/userSelectors';
-import SignInForm from '../components/Auth/SignInForm';
+import SignInForm from '../components/Auth/SignInForm.js';
 
 class SignIn extends Component {
   componentDidUpdate(prevProps, prevState) {

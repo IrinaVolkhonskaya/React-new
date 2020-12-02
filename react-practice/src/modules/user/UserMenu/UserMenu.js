@@ -7,6 +7,7 @@ import s from "./UserMenu.module.css";
 import './UserMenu.css';
 
 
+
 export default function UserMenu({ user: { name }, onSignOut = () => null }) {
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);
   const containerRef = useRef();
@@ -53,7 +54,7 @@ export default function UserMenu({ user: { name }, onSignOut = () => null }) {
       <span className={s.name}>{name}</span>
       {isDropDownOpen && <Dropdown />}
       <Button
-      className="button_signout"
+        className="button_signout"
         variant="contained"
         color="primary"
         size="small"

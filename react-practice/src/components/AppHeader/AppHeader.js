@@ -1,11 +1,12 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import Logo from "../Logo/Logo";
+import Logo from "../Logo/Logo.tsx";
 import UserMenu from "../../modules/user/UserMenu/UserMenu";
-import Navigation from "../Navigation/Navigation.js";
-import AuthNav from "../Auth/AuthNav.tsx";
-import CartIcon from "../../modules/cart/CartIconContainer.ts";
+import Navigation from "../Navigation/Navigation";
+import AuthNav from "../Auth/AuthNav";
+// import CartIcon from "../../modules/cart/CartIconContainer.ts";
+import CartIcon from "../../modules/cart/CartIconContainer";
 import appLogo from "./assets/logo.png";
 import avatar from "./assets/avatar.jpg";
 import navItems from "../../configs/main-nav";
@@ -46,9 +47,14 @@ import s from "./Appheader.module.css";
 //     </header>
 //   );
 // }
+
 import { Header, Segment } from "semantic-ui-react";
 
-export default function AppHeader({ name }) {
+// type AppHeaderType = {
+
+// }
+
+export default function AppHeader ({ name }) {
   const dispatch = useDispatch();
   const user = useSelector(selectors.getUser);
   const isAuthenticated = useSelector(selectors.isAuthenticated);

@@ -5,11 +5,11 @@ type InputType = {
   type: string,
   name: string,
   value: string,
-  onChange: () => void,
+  onChange: (evt: React.FormEvent<HTMLInputElement>)=> void,
   placeholder: string,
 }
 
-const Input = ({
+const Input: React.FC<InputType> = ({
   type = 'text',
   name = '',
   value = '',

@@ -5,8 +5,11 @@ import Loader from '../../../components/Loader/Loader';
 import * as API from '../../../services/orders-api';
 
 type StateType = {
+
   orders: Array<ItemType>,
   isLoading: boolean,
+  onDelete?: (arg0: number) => number,
+  onShowMoreInfo?: void,
 }
 
 type ItemType = {
