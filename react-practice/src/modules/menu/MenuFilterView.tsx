@@ -2,12 +2,12 @@ import React from 'react';
 import { Input } from 'semantic-ui-react'
 import './MenuFilter.css';
 
-type MenuFilterViewType = {
+interface IMenuFilterViewProps {
   value: string,
   onChange: Function
 }
 
-const MenuFilterView = ({ value = '', onChange = () => null }: MenuFilterViewType) => (
+const MenuFilterView: React.FC<IMenuFilterViewProps> = ({ value = '', onChange = () => null }) => (
   <Input
     value={value}
     onChange={e => {

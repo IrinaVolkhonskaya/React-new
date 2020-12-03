@@ -3,13 +3,12 @@ import React from 'react';
 import avatar from '../../../components/AppHeader/assets/avatar.jpg';
 import s from './Avatar.module.css';
 
-type AvatarType = {
+interface IAvatarProps {
   width: number,
   height: number,
 }
 
-
-const Avatar = ({ width, height }: AvatarType) => (
+const Avatar: React.FC<IAvatarProps> = ({ width, height }) => (
   <img
     className={s.avatar}
     src={avatar}

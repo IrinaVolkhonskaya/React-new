@@ -24,7 +24,7 @@ import OrderItem from "./OrderItem";
 //   },
 // }));
 
-type OrderType = {
+interface IOrderProps {
   id: number,
   date: Date,
   price: number,
@@ -32,14 +32,14 @@ type OrderType = {
   rating: number,
 }
 
-type OrdersType = {
+interface IOrdersProps {
   id?: number,
-  items: Array<OrderType>,
+  items: Array<IOrderProps>,
   onShowMoreInfo: any,
   onDelete: any,
 }
 
-const Orders: React.FC<OrdersType> = ({ items, onDelete, onShowMoreInfo }) => (
+const Orders: React.FC<IOrdersProps> = ({ items, onDelete, onShowMoreInfo }) => (
   <table>
     <tbody>
       {items.map(item => (

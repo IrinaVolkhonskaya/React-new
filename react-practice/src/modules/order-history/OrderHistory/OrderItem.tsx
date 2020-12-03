@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-type OrderType = {
+interface IOrderProps {
   id?: number,
   date: Date,
   price: number,
@@ -29,7 +29,7 @@ type OrderType = {
   onDelete: any,
 }
 
-const OrderItem: React.FC<OrderType> = ({
+const OrderItem: React.FC<IOrderProps> = ({
   id,
   date,
   price,

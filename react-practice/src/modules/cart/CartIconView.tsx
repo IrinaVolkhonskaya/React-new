@@ -2,11 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import s from "./CartIcon.module.css";
 
-type CartIconViewProps = {
+interface ICartIconView {
   amount: number,
 }
 
-const CartIcon = ({ amount }: CartIconViewProps ) => (
+const CartIcon: React.FC<ICartIconView> = ({ amount } ) => (
   <div className={s.container}>
     <Link to="/cart">
       <img

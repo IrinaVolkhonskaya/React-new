@@ -4,15 +4,15 @@ import Loader from '../../../components/Loader/Loader';
 // import * as API from '../../../orders-api';
 import * as API from '../../../services/orders-api';
 
-type StateType = {
+interface OrdersPageState {
 
-  orders: Array<ItemType>,
+  orders: Array<IOrderItem>,
   isLoading: boolean,
-  onDelete?: (arg0: number) => number,
+  onDelete?: (arg0: number) => number | undefined,
   onShowMoreInfo?: void,
 }
 
-type ItemType = {
+interface IOrderItem {
   id?: number,
   date: string,
   price: number,
@@ -20,7 +20,7 @@ type ItemType = {
   rating: number,
 }
 
-export default class OrdersPage extends Component<{}, StateType> {
+export default class OrdersPage extends Component<{}, OrdersPageState> {
   state = {
     orders: [],
     isLoading: false,
@@ -39,7 +39,7 @@ export default class OrdersPage extends Component<{}, StateType> {
       if (!isOk) return;
 
       this.setState(state => ({
-        orders: state.orders.filter((item: ItemType) => item.id !== id),
+        orders: state.orders.filter((item: IOrderItem) => item.id !== id),
       }));
     });
   };

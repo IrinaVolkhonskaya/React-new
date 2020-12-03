@@ -3,17 +3,16 @@ import { NavLink } from 'react-router-dom';
 
 import s from './Navigation.module.css';
 
-type ItemType = {
+interface IItem {
   name: string,
   path: string,
 }
 
-type NavigationType = {
-  items: Array<ItemType>,
+interface INavigation {
+  items: Array<IItem>,
 }
 
-
-const Navigation: React.FC<NavigationType> = ({ items = [] } ) => (
+const Navigation: React.FC<INavigation> = ({ items = [] } ) => (
   <ul className={s.nav}>
     {items.map(item => (
       <li key={item.name}>

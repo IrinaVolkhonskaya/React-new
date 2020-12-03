@@ -26,26 +26,26 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-type ItemType = {
+interface IItem {
   id: number, 
   name: string, 
   amount: number, 
   price: number, 
 }
 
-type CartViewType = {
-  menuCart: Array<ItemType>,
+interface ICartView {
+  menuCart: Array<IItem>,
   removeFromCart: (arg0: number) => number,
   addToCart: (arg0: number) => number,
   decreaseFromCart: (arg0: number) => number,
 }
 
-const CartView = ({
+const CartView: React.FC<ICartView> = ({
   menuCart = [],
   removeFromCart,
   addToCart,
   decreaseFromCart,
-}: CartViewType) => {
+}) => {
   const classes = useStyles();
   // console.log(`menuCart:`, menuCart);
   return menuCart.length > 0 ? (
@@ -61,7 +61,7 @@ const CartView = ({
           </TableRow>
         </TableHead>
         <TableBody>
-          {menuCart.map(({ id, name, amount, price }: ItemType) => (
+          {menuCart.map(({ id, name, amount, price }: IItem) => (
             <TableRow key={id}>
               <TableCell component="th" scope="row">
                 {name}

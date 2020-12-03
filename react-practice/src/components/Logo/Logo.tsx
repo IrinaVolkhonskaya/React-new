@@ -1,12 +1,12 @@
 import React from "react";
 import logo from "../AppHeader/assets/logo.png";
 
-type LogoPropsType = {
+interface ILogo {
   width: number,
   height: number,
 }
 
-const Logo: React.FC<LogoPropsType> = ({ width, height}) => (
+const Logo: React.FC<ILogo> = ({ width, height}) => (
   <img
     className="logo"
     src={logo}

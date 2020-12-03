@@ -1,7 +1,7 @@
 import React from "react";
 import s from "./MenuListView.module.css";
 
-type MenuItemViewType = {
+interface IMenuItemViewProps {
   id: number,
   name: string,
   image: string,
@@ -10,7 +10,7 @@ type MenuItemViewType = {
 }
 
 
-const MenuItemView = ({ id, name, image, price, description }: MenuItemViewType) => {
+const MenuItemView: React.FC<IMenuItemViewProps> = ({ id, name, image, price, description }) => {
   return (
     <div className="menuItem">
       Menu Item ID: {id}
